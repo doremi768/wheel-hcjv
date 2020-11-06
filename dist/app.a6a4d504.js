@@ -12443,8 +12443,6 @@ exports.default = void 0;
 //
 //
 //
-//
-//
 var _default = {
   props: {
     icon: {},
@@ -12471,27 +12469,25 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "w-button",
-        class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj)
-      },
-      [
-        _vm.icon
-          ? _c("w-icon", {
-              staticClass: "icon",
-              class: { rotate: _vm.icon == "loading" },
-              attrs: { name: _vm.icon }
-            })
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
-      ],
-      1
-    )
-  ])
+  return _c(
+    "button",
+    {
+      staticClass: "w-button",
+      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj)
+    },
+    [
+      _vm.icon
+        ? _c("w-icon", {
+            staticClass: "icon",
+            class: { rotate: _vm.icon == "loading" },
+            attrs: { name: _vm.icon }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -12591,6 +12587,68 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"C:/Users/ThinkPad/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/button-group.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {};
+exports.default = _default;
+        var $da8d96 = exports.default || module.exports;
+      
+      if (typeof $da8d96 === 'function') {
+        $da8d96 = $da8d96.options;
+      }
+    
+        /* template */
+        Object.assign($da8d96, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w-button-group" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$da8d96', $da8d96);
+          } else {
+            api.reload('$da8d96', $da8d96);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"C:/Users/ThinkPad/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -12600,16 +12658,20 @@ var _button = _interopRequireDefault(require("./button.vue"));
 
 var _icon = _interopRequireDefault(require("./icon.vue"));
 
+var _buttonGroup = _interopRequireDefault(require("./button-group.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.component('w-button', _button.default);
 
 _vue.default.component('w-icon', _icon.default);
 
+_vue.default.component('w-button-group', _buttonGroup.default);
+
 new _vue.default({
   el: '#app'
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue"}],"C:/Users/ThinkPad/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group.vue":"src/button-group.vue"}],"C:/Users/ThinkPad/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

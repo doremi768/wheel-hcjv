@@ -1,12 +1,10 @@
 <template>
-    <div>
         <button class="w-button" :class="{[`icon-${iconPosition}`]: true}">
             <w-icon v-if="icon" :name="icon" class="icon" :class="{rotate: icon == 'loading'}"></w-icon>
             <div class="content">
                  <slot/>
             </div>
         </button>
-    </div>
 </template>
 
 <script>
@@ -40,7 +38,7 @@ export default {
         display: inline-flex;
         justify-content: center;
         align-items: center;
-
+        vertical-align: middle;
         &:hover{border-color: var(--border-color-hover);}
         &:active{background-color: var(--button-active-bg);}
         &:focus{outline: none;}
