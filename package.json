@@ -15,5 +15,8 @@
     "ui"
   ],
   "author": "doremi",
-  "license": "ISC"
+  "license": "ISC",
+  "alias": {
+    "vue" : "./node_modules/vue/dist/vue.common.js"
+  }
 }
