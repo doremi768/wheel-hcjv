@@ -6,7 +6,14 @@
 
 <script>
 export default {
-    
+    mounted() {
+        console.log(this.$el.children)
+        // for(let node of this.$el.children){
+        //     if(node.nodeName.toLowerCase() !== 'button'){
+        //         console.warn('w-button-group 的子元素应该全是 w-button');
+        //     }
+        // }
+    }
 }
 </script>
 
