@@ -1,0 +1,19 @@
+{
+  "name": "wheel",
+  "version": "1.0.0",
+  "description": "ui组件库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/what_and/wheel.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "doremi",
+  "license": "ISC"
+}
