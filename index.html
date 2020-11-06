@@ -20,18 +20,26 @@
             --border-color: #999;
             --border-color-hover: #666;
         }
-    </style>
-    <style>
         #app{
             margin: 20px;
         }
-       
+    </style>
+    <style>
+       .icon{
+           margin-top: .2em;
+           width: 1em;
+           height: 1em;
+        }
     </style>
 </head>
 <body>
     <div id="app">
-        <g-button></g-button>
+        <g-button icon="settings" icon-position="right">按钮</g-button>
+        <g-button icon="settings" >按钮</g-button>
+        <g-button >按钮</g-button>
+
     </div>
     <script src="src/app.js"></script>
+    <script src="//at.alicdn.com/t/font_2185300_pnwl844st2l.js"></script>
 </body>
 </html>
