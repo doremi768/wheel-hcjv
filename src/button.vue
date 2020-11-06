@@ -1,10 +1,7 @@
 <template>
     <div>
         <button class="w-button" :class="{[`icon-${iconPosition}`]: true}">
-            <w-icon v-if="icon" :name="icon" class="icon"></w-icon>
-            <!-- <svg class="icon">
-                <use :xlink:href="`#i-${icon}`"></use>
-            </svg> -->
+            <w-icon v-if="icon" :name="icon" class="icon" :class="{rotate: icon == 'loading'}"></w-icon>
             <div class="content">
                  <slot/>
             </div>
@@ -28,6 +25,10 @@ export default {
 </script>
 
 <style lang="scss">
+  @keyframes rotate {
+      0%{transform: rotate(0deg);}
+      100%{transform: rotate(360deg);}
+  }
  .w-button{
         font-size: var(--font-size);
         height: var(--button-height);
@@ -51,7 +52,10 @@ export default {
             > .icon{order: 2; margin-left: .3em; margin-right: 0}
             > .content{order: 1}
         }
-        
+
+        .rotate{
+            animation: rotate 1s infinite linear;
+        } 
     }
         
 </style>

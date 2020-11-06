@@ -1,3 +1,11 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .w-button {
   font-size: var(--font-size);
   height: var(--button-height);
@@ -33,6 +41,9 @@
 }
 .w-button.icon-right > .content {
   order: 1;
+}
+.w-button .rotate {
+  animation: rotate 1s infinite linear;
 }
 .icon {
   margin-top: 0.2em;
