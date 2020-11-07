@@ -12594,6 +12594,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 //
 //
 //
@@ -12602,11 +12609,22 @@ exports.default = void 0;
 //
 var _default = {
   mounted: function mounted() {
-    console.log(this.$el.children); // for(let node of this.$el.children){
-    //     if(node.nodeName.toLowerCase() !== 'button'){
-    //         console.warn('w-button-group 的子元素应该全是 w-button');
-    //     }
-    // }
+    var _iterator = _createForOfIteratorHelper(this.$el.children),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var node = _step.value;
+
+        if (node.nodeName.toLowerCase() !== 'button') {
+          console.warn('w-button-group 的子元素应该全是 w-button');
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
   }
 };
 exports.default = _default;
@@ -23430,7 +23448,7 @@ module.exports = require('./lib/chai');
 
 var _vue = _interopRequireDefault(require("vue"));
 
-var _button2 = _interopRequireDefault(require("./button.vue"));
+var _button = _interopRequireDefault(require("./button.vue"));
 
 var _icon = _interopRequireDefault(require("./icon.vue"));
 
@@ -23444,7 +23462,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_vue.default.component('w-button', _button2.default);
+_vue.default.component('w-button', _button.default);
 
 _vue.default.component('w-icon', _icon.default);
 
@@ -23455,41 +23473,76 @@ new _vue.default({
 });
 //单元测试
 {
-  var Constructor = _vue.default.extend(_button2.default);
-
-  console.log(Constructor);
-  var button = new Constructor({
-    propsData: {
-      icon: 'settings'
-    }
-  });
-  button.$mount('#test');
-  var useElement = button.$el.querySelector('use');
-
-  _chai.default.expect(useElement.getAttribute('xlink:href')).to.eq('#i-settings');
-}
-{
   var div = document.createElement('div');
   document.body.appendChild(div);
 
-  var _Constructor = _vue.default.extend(_button2.default);
+  var Constructor = _vue.default.extend(_button.default);
 
-  console.log(_Constructor);
+  var vm = new Constructor({
+    propsData: {
+      icon: 'settings'
+    }
+  });
+  vm.$mount(div);
+  var useElement = vm.$el.querySelector('use');
 
-  var _button = new _Constructor({
+  _chai.default.expect(useElement.getAttribute('xlink:href')).to.eq('#i-settings');
+
+  vm.$el.remove();
+  vm.$destroy();
+}
+{
+  var _div = document.createElement('div');
+
+  document.body.appendChild(_div);
+
+  var _Constructor = _vue.default.extend(_button.default);
+
+  var _vm = new _Constructor({
     propsData: {
       icon: 'settings'
     }
   });
 
-  _button.$mount(div);
+  _vm.$mount(_div);
 
-  var svg = _button.$el.querySelector('svg');
+  var svg = _vm.$el.querySelector('svg');
 
   var _window$getComputedSt = window.getComputedStyle(svg),
       order = _window$getComputedSt.order;
 
   _chai.default.expect(order).to.eq("1");
+
+  _vm.$el.remove();
+
+  _vm.$destroy();
+}
+{
+  var _div2 = document.createElement('div');
+
+  document.body.appendChild(_div2);
+
+  var _Constructor2 = _vue.default.extend(_button.default);
+
+  var _vm2 = new _Constructor2({
+    propsData: {
+      icon: 'settings',
+      iconPosition: 'right'
+    }
+  });
+
+  _vm2.$mount(_div2);
+
+  var _svg = _vm2.$el.querySelector('svg');
+
+  var _window$getComputedSt2 = window.getComputedStyle(_svg),
+      _order = _window$getComputedSt2.order;
+
+  _chai.default.expect(_order).to.eq("2");
+
+  _vm2.$el.remove();
+
+  _vm2.$destroy();
 }
 },{"vue":"node_modules/vue/dist/vue.common.js","./button.vue":"src/button.vue","./icon.vue":"src/icon.vue","./button-group.vue":"src/button-group.vue","chai":"node_modules/chai/index.js"}],"C:/Users/ThinkPad/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -23519,7 +23572,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36924" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37586" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
