@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Button from './button.vue'
 import Icon from './icon.vue'
 import buttonGroup from './button-group.vue'
-import { expect } from 'chai';
 Vue.component('w-button',Button);
 Vue.component('w-icon',Icon);
 Vue.component('w-button-group',buttonGroup);
@@ -14,6 +13,7 @@ new Vue({
 import Chai from 'chai'
 //单元测试
 {
+    //测试按钮含有 icon
     const div = document.createElement('div');
     document.body.appendChild(div)
     const Constructor = Vue.extend(Button);
