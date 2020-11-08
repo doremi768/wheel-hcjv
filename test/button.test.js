@@ -18,7 +18,7 @@ describe('Button', () => {
         }).$mount()
         const useElement = vm.$el.querySelector('use')
         expect(useElement.getAttribute('xlink:href')).to.equal('#i-settings')
-        vm.$destroy()
+        vm.$destroy() 
     })
     it('可以设置loading.', () => {
         const Constructor = Vue.extend(Button)
