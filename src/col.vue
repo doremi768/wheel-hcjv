@@ -1,10 +1,6 @@
 <template>
-    <div class="col" 
-    :class="[`col-${span}`, blank &&`blank-${blank}`]"
-    :style="{paddingLeft: gutter/2 + 'px', paddingRight: gutter/2 + 'px'}">
-    <div style="border: 1px solid green; height: 100px;">
+    <div class="col" :class="colClass" :style="colStyle">
         <slot></slot>
-    </div>
     </div>
 </template>
 
@@ -21,6 +17,22 @@ export default {
     data() {
         return {
             gutter: 0
+            
+        }
+    },
+    computed: {
+        colClass(){
+            let {span,blank} = this
+            return [
+                `col-${span}`,
+                 blank &&`blank-${blank}`
+            ]
+        },
+        colStyle(){
+            return {
+                paddingLeft: this.gutter/2 + 'px',
+                paddingRight: this.gutter/2 + 'px'
+            }
         }
     }
 }
