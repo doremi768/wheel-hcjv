@@ -29,18 +29,18 @@
             height: 100px;
             background: gray;
         }
-        /* .col {
+        .col {
             border: 1px solid red;
-        } */
+        }
     </style>
 </head>
 <body>
     <div id="app">
-<!-- 
-        <div>
+ 
+       <div>
             <w-row gutter="20">
-                <w-col span="3"></w-col>
-                <w-col span="9"></w-col>
+                <w-col span="3" :phone="{span: 10}"></w-col>
+                <w-col span="9" :phone="{span: 2}"></w-col>
             </w-row>
             <w-row gutter="20">
                 <w-col span="3"></w-col>
@@ -52,23 +52,10 @@
                 <w-col span="6"></w-col>
             </w-row>
             
-            <w-row gutter="20">
-                <w-col span="3"></w-col>
-                <w-col span="3"></w-col>
-                <w-col span="3"></w-col>
-                <w-col span="1" blank="2"></w-col>
-            </w-row>
-            <w-row gutter="20">
-                <w-col span="2"></w-col>
-                <w-col span="10"></w-col>
-            </w-row>
-            <w-row gutter="20">
-                <w-col span="2"></w-col>
-                <w-col span="10"></w-col>
-            </w-row>
-        </div>
-        <hr>
-        <div style="margin-top: 30px;">
+        </div> 
+        
+        <!-- <hr> -->
+        <!-- <div style="margin-top: 30px;">
             <w-button icon="loading" icon-position="right">按钮</w-button>
             <w-button icon="settings">按钮</w-button>
             <w-button>按钮</w-button>
@@ -77,20 +64,7 @@
                 <w-button>更多</w-button>
                 <w-button>下一页</w-button>
             </w-button-group>
-        </div> -->
-        <w-row class="topbar">
-            <w-col span="4" class="col">
-                <w-row align="center">
-                    <w-col>1</w-col>
-                    <w-col>2</w-col>
-                    <w-col>3</w-col>
-                    <w-col>4</w-col>
-                </w-row>
-            </w-col>
-            <w-col span="8" class="col">
-                
-            </w-col>
-        </w-row>
+        </div>  -->
     </div> 
     
     <script src="src/app.js"></script>

@@ -12,6 +12,19 @@ export default {
         },
         blank: {
             type: [Number,String]
+        },
+        phone: {
+            type: Object,
+            validator(value){
+                let keys = Object.keys(value);
+                let valid = true;
+                keys.forEach(key => {
+                    if(!['span','blank'].includes(key)){
+                        valid = false;
+                    }
+                })
+                return valid;
+            }
         }
     },
     data() {
@@ -22,10 +35,11 @@ export default {
     },
     computed: {
         colClass(){
-            let {span,blank} = this
+            let {span,blank,phone} = this
             return [
                 `col-${span}`,
-                 blank &&`blank-${blank}`
+                 blank &&`blank-${blank}`,
+                 phone && `col-phone-${phone.span}`
             ]
         },
         colStyle(){
@@ -54,6 +68,23 @@ export default {
                 margin-left: ($n / 12) * 100%;
             }
         }
-       
+     }
+     @media(max-width: 576px) and (max-width: 768px) {
+         .col{
+            height: 100px;
+            // width: 50%;
+            $class: col-phone-;
+            @for $n from 1 through 12{
+                &.#{$class}#{$n}{
+                    width: ($n / 12) * 100%;
+                }
+            }
+            $class: blank-phone-;
+            @for $n from 1 through 12{
+                &.#{$class}#{$n}{
+                    margin-left: ($n / 12) * 100%;
+                }
+            }
+        }
      }
 </style>
