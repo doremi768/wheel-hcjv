@@ -4,8 +4,9 @@
   "description": "ui组件库",
   "main": "dist/index.js",
   "scripts": {
-    "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
+    "dev-test": "concurrently \"parcel watch test/* --no-cache\"  \" karma start\"" ,
+    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
+    "start": "parcel index.html --no-cache"
   },
   "repository": {
     "type": "git",

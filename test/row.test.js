@@ -45,7 +45,7 @@ describe('Row', () => {
                 align: 'center'
             }
         }).$mount(div)
-        const element = vm.$el;
+        const element = vm.$el; 
         expect(getComputedStyle(element).justifyContent).to.eq('center');
         vm.$el.remove()
         vm.$destroy()
