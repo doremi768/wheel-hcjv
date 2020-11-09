@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
     .col{
         height: 100px;
-        width: 50%;
+        // width: 50%;
         $class: col-;
         @for $n from 1 through 12{
             &.#{$class}#{$n}{

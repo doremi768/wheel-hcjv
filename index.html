@@ -25,11 +25,18 @@
         }
     </style>
     <style>
+        .topbar{
+            height: 100px;
+            background: gray;
+        }
+        /* .col {
+            border: 1px solid red;
+        } */
     </style>
 </head>
 <body>
-    <div id="app" style="border: 1px solid red;">
-
+    <div id="app">
+<!-- 
         <div>
             <w-row gutter="20">
                 <w-col span="3"></w-col>
@@ -70,8 +77,22 @@
                 <w-button>更多</w-button>
                 <w-button>下一页</w-button>
             </w-button-group>
-        </div>
-    </div>
+        </div> -->
+        <w-row class="topbar">
+            <w-col span="4" class="col">
+                <w-row align="center">
+                    <w-col>1</w-col>
+                    <w-col>2</w-col>
+                    <w-col>3</w-col>
+                    <w-col>4</w-col>
+                </w-row>
+            </w-col>
+            <w-col span="8" class="col">
+                
+            </w-col>
+        </w-row>
+    </div> 
+    
     <script src="src/app.js"></script>
     <script src="//at.alicdn.com/t/font_2185300_ea1wbo3rwni.js"></script>
 </body>
