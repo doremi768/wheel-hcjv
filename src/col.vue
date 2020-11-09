@@ -55,8 +55,8 @@ export default {
 <style lang="scss" scoped>
     .col{
         height: 100px;
-        // width: 50%;
         $class: col-;
+        width: 50%;
         @for $n from 1 through 12{
             &.#{$class}#{$n}{
                 width: ($n / 12) * 100%;
@@ -72,7 +72,7 @@ export default {
      @media(max-width: 576px) and (max-width: 768px) {
          .col{
             height: 100px;
-            // width: 50%;
+            width: 50%;
             $class: col-phone-;
             @for $n from 1 through 12{
                 &.#{$class}#{$n}{
@@ -85,6 +85,7 @@ export default {
                     margin-left: ($n / 12) * 100%;
                 }
             }
+
         }
      }
 </style>
