@@ -1,6 +1,10 @@
 <template>
-    <div class="col" :class="[`col-${span}`]">
+    <div class="col" 
+    :class="[`col-${span}`, blank &&`blank-${blank}`]"
+    :style="{paddingLeft: gutter/2 + 'px', paddingRight: gutter/2 + 'px'}">
+    <div style="border: 1px solid green; height: 100px;">
         <slot></slot>
+    </div>
     </div>
 </template>
 
@@ -9,6 +13,14 @@ export default {
     props: {
         span: {
             type: [Number,String]
+        },
+        blank: {
+            type: [Number,String]
+        }
+    },
+    data() {
+        return {
+            gutter: 0
         }
     }
 }
@@ -17,17 +29,19 @@ export default {
 <style lang="scss" scoped>
     .col{
         height: 100px;
-        background: grey;
         width: 50%;
-        border: 1px solid red;
-
         $class: col-;
         @for $n from 1 through 12{
             &.#{$class}#{$n}{
                 width: ($n / 12) * 100%;
             }
         }
-        
-     }
+        $class: blank-;
+         @for $n from 1 through 12{
+            &.#{$class}#{$n}{
+                margin-left: ($n / 12) * 100%;
+            }
+        }
        
+     }
 </style>
