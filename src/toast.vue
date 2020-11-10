@@ -81,12 +81,19 @@ $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(0,0,0,0.75);
 $toast-color: #fff;
-@keyframes fade-in{
-    0% {opacity: 0; transform: translateY(100%);}
-    100% {opacity: 1; transform: translateY(0%);}
+@keyframes fade-in-botom{
+    0% {opacity: 0; transform: translate(-50%,100%);}
+    100% {opacity: 1; transform: translate(-50%,0%);}
+}
+@keyframes fade-in-top{
+    0% {opacity: 0; transform: translate(-50%,-100%);}
+    100% {opacity: 1; transform: translate(-50%,0%);}
+}
+@keyframes fade-in-middle{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
     .toast{
-        animation: fade-in 1s;
         font-size: $font-size;min-height: $toast-min-height;
         display: flex;align-items: center;
         position: fixed;left: 50%;
@@ -104,9 +111,9 @@ $toast-color: #fff;
 
         .close {flex-shrink: 0;}
 
-        &.position-top{top: 0;transform: translate(-50%);}
-        &.position-middle{top: 50%;transform: translate(-50%,-50%);}
-        &.position-bottom{bottom: 0%;transform: translate(-50%);}
+        &.position-top{top: 0;transform: translate(-50%);animation: fade-in-top 1s;}
+        &.position-middle{top: 50%;transform: translate(-50%,-50%); animation: fade-in-middle 1s;}
+        &.position-bottom{bottom: 0%;transform: translate(-50%);animation: fade-in-botom 1s;}
     }
 
 </style>

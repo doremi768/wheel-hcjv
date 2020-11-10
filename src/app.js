@@ -18,9 +18,25 @@ Vue.use(plugin);
 new Vue({
     el: '#app',
     methods: {
-        showToast(){
+        showToast1(){
             this.$toast(`sdffd，，，${Math.random() * 100}`,{
                 position: 'top',
+                closeButton: {
+                    text: '关闭'
+                }
+            });
+        },
+        showToast2(){
+            this.$toast(`sdffd，，，${Math.random() * 100}`,{
+                position: 'middle',
+                closeButton: {
+                    text: '关闭'
+                }
+            });
+        },
+        showToast3(){
+            this.$toast(`sdffd，，，${Math.random() * 100}`,{
+                position: 'bottom',
                 closeButton: {
                     text: '关闭'
                 }
