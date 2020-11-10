@@ -19,8 +19,8 @@ new Vue({
     el: '#app',
     methods: {
         showToast(){
-            this.$toast('asfsdfd士大夫大fsdfdsf',{
-                position: 'bottom'
+            this.$toast(`sdffd，，，${Math.random() * 100}`,{
+                position: 'top',
             });
         }
     }

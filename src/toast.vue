@@ -86,7 +86,7 @@ $toast-color: #fff;
         position: fixed;left: 50%;
         background: $toast-bg;color: $toast-color;border-radius: 4px;
         shadow: 0 0 3px 0px rgba(0,0,0,0.5);
-        padding: 0 10px;
+        padding: 0 10px; margin: 10px;
 
         .message {margin: 10px 0;}
 
