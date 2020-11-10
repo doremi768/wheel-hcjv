@@ -17,7 +17,9 @@ Vue.use(plugin);
 
 new Vue({
     el: '#app',
-    created(){
-        this.$toast('aaaa')
+    methods: {
+        showToast(){
+            this.$toast('aaaaa');
+        }
     }
 })
