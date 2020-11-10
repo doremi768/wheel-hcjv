@@ -63,6 +63,7 @@ export default {
         },
         close(){
             this.$el.remove();
+            this.$emit('close');
             this.$destroy();
         },
         onClickClose(){
@@ -80,14 +81,18 @@ $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(0,0,0,0.75);
 $toast-color: #fff;
+@keyframes fade-in{
+    0% {opacity: 0; transform: translateY(100%);}
+    100% {opacity: 1; transform: translateY(0%);}
+}
     .toast{
+        animation: fade-in 1s;
         font-size: $font-size;min-height: $toast-min-height;
         display: flex;align-items: center;
         position: fixed;left: 50%;
         background: $toast-bg;color: $toast-color;border-radius: 4px;
         shadow: 0 0 3px 0px rgba(0,0,0,0.5);
         padding: 0 10px; margin: 10px;
-
         .message {margin: 10px 0;}
 
         .line{
@@ -103,5 +108,5 @@ $toast-color: #fff;
         &.position-middle{top: 50%;transform: translate(-50%,-50%);}
         &.position-bottom{bottom: 0%;transform: translate(-50%);}
     }
-    
+
 </style>

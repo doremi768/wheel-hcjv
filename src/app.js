@@ -21,6 +21,9 @@ new Vue({
         showToast(){
             this.$toast(`sdffd，，，${Math.random() * 100}`,{
                 position: 'top',
+                closeButton: {
+                    text: '关闭'
+                }
             });
         }
     }
