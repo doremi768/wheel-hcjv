@@ -19,7 +19,7 @@ new Vue({
     el: '#app',
     methods: {
         showToast(){
-            this.$toast('asfsdfd士大夫大师傅地方撒旦飞洒都是士大夫是夫大师asfsdfd士大夫大师傅地方撒旦飞洒都是士大夫是夫大asfsdfd士大夫大师傅地方撒旦飞洒都是士大夫是夫大傅地方撒旦飞洒都是士夫大师傅地方撒旦飞洒都是士是是ssdfsdfsdfdsf',{
+            this.$toast('asfsdfd士大夫大fsdfdsf',{
                 closeButton: {
                     text: '关闭',
                     callback: (toast) => {
