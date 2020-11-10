@@ -1,10 +1,10 @@
 <template>
-    <div class="toast" ref="wrapper">
+    <div class="toast" ref="wrapper" :class="toastClasses">
         <div class="message">
             <slot v-if="!enableHtml"></slot>
             <div v-else v-html="$slots.default[0]"></div>
         </div>
-        <div class="line" ref="line"></div>
+        <div class="line" ref="line" v-if="closeButton"></div>
         <span v-if="closeButton" class="close" @click="onClickClose">
             {{closeButton.text}}
         </span>
@@ -20,25 +20,32 @@ export default {
         },
         autoCloseDelay: {
             type: Number,
-            default: 60
+            default: 2
         },
         closeButton: {
-            type: Object,
-            default: ()=>{
-                return {
-                    text: '关闭',
-                    callback: undefined
-                }
-            }
+            type: Object
         },
         enableHtml: {
             type: Boolean,
             default: false
+        },
+        position: {
+            type: String,
+            default: 'top',
+            validator(value){
+                return ['top','bottom','middle'].includes(value);
+            }
         }
     },
     mounted(){
-        this.updateStyles();
-        this.execAutoClose();
+        this.closeButton ? this.updateStyles() : this.execAutoClose();
+    },
+    computed: {
+        toastClasses(){
+            return {
+                [`position-${this.position}`]: true
+            };
+        }
     },
     methods: {
         execAutoClose(){
@@ -63,9 +70,6 @@ export default {
             if(this.closeButton && typeof this.closeButton.callback === 'function'){
                 this.closeButton.callback(this);
             }
-        },
-        log() {
-            console.log(1);
         }
     }
 }
@@ -78,15 +82,14 @@ $toast-bg: rgba(0,0,0,0.75);
 $toast-color: #fff;
     .toast{
         font-size: $font-size;min-height: $toast-min-height;
-        position: fixed;top: 0;left: 50%;transform: translate(-50%);
         display: flex;align-items: center;
+        position: fixed;left: 50%;
         background: $toast-bg;color: $toast-color;border-radius: 4px;
         shadow: 0 0 3px 0px rgba(0,0,0,0.5);
         padding: 0 10px;
 
-        .message {
-            margin: 10px 0;
-        }
+        .message {margin: 10px 0;}
+
         .line{
         margin: 0 10px;
         height: 100%;
@@ -94,9 +97,11 @@ $toast-color: #fff;
         background: #fff;
         }
 
-        .close {
-            flex-shrink: 0;
-        }
+        .close {flex-shrink: 0;}
+
+        &.position-top{top: 0;transform: translate(-50%);}
+        &.position-middle{top: 50%;transform: translate(-50%,-50%);}
+        &.position-bottom{bottom: 0%;transform: translate(-50%);}
     }
     
 </style>

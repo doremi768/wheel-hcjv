@@ -20,13 +20,7 @@ new Vue({
     methods: {
         showToast(){
             this.$toast('asfsdfd士大夫大fsdfdsf',{
-                closeButton: {
-                    text: '关闭',
-                    callback: (toast) => {
-                        toast.log();
-                    }
-                },
-                autoCloseDelay: 60,
+                position: 'bottom'
             });
         }
     }
