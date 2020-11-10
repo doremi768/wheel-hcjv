@@ -29,14 +29,25 @@
             height: 100px;
             border: 1px solid green;
         }
+        #app > div{
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
     <div id="app">
-        <button @click="showToast1">点击1</button>
-        <button @click="showToast2">点击2</button>
-        <button @click="showToast3">点击3</button>
-
+        <div>
+            <button @click="showToast1">点击1</button>
+        </div>
+        <div>
+            <button @click="showToast2">点击2</button>
+        </div>
+        <div>
+            <button @click="showToast3">点击3</button>
+        </div>
+        <div>
+            <button @click="showToast4">点击4</button>
+        </div>
     </div>
     
     <script src="src/app.js"></script>

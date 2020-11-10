@@ -19,7 +19,7 @@ new Vue({
     el: '#app',
     methods: {
         showToast1(){
-            this.$toast(`sdffd，，，${Math.random() * 100}`,{
+            this.$toast(`sdffd，，，${parseInt(Math.random() * 100)}`,{
                 position: 'top',
                 closeButton: {
                     text: '关闭'
@@ -27,7 +27,7 @@ new Vue({
             });
         },
         showToast2(){
-            this.$toast(`sdffd，，，${Math.random() * 100}`,{
+            this.$toast(`sdffd，，，${parseInt(Math.random() * 100)}`,{
                 position: 'middle',
                 closeButton: {
                     text: '关闭'
@@ -35,11 +35,16 @@ new Vue({
             });
         },
         showToast3(){
-            this.$toast(`sdffd，，，${Math.random() * 100}`,{
+            this.$toast(`sdffd，，，${parseInt(Math.random() * 100)}`,{
                 position: 'bottom',
                 closeButton: {
                     text: '关闭'
                 }
+            });
+        },
+        showToast4(){
+            this.$toast(`sdffd，，，${parseInt(Math.random() * 100)}`,{
+                position: 'middle',
             });
         }
     }

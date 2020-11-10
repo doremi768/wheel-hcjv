@@ -20,7 +20,7 @@ describe('Col', () => {
             }
         }).$mount(div)
         const element = vm.$el;
-        expect(vm.$el.classList.contains('col-1')).to.eq(true);
+        expect(element.classList.contains('col-1')).to.eq(true);
         vm.$el.remove()
         vm.$destroy()
     })
