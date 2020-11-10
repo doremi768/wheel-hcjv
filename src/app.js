@@ -19,7 +19,7 @@ new Vue({
     el: '#app',
     methods: {
         showToast(){
-            this.$toast('aaaaa');
+            this.$toast('asfasgag');
         }
     }
 })
