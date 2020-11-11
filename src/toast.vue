@@ -15,7 +15,7 @@
 export default {
     props: {
         autoCloseDelay: {
-            type: Number,
+            type: [Number,String],
             default: 2
         },
         closeButton: {
@@ -54,7 +54,8 @@ export default {
             this.$nextTick(()=>{
                 this.$refs.line.style.height = 
                 `${this.$refs.wrapper.getBoundingClientRect().height}px`;
-            },0)
+
+            })
         },
         close(){
             this.$el.remove();
