@@ -29,6 +29,5 @@ Vue.use(plugin);
 new Vue({
     el: '#app',
     methods: {
-        
-    }
+    },
 })

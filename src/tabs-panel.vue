@@ -6,7 +6,19 @@
 
 <script>
 export default {
-    
+    name: 'tabsPanel',
+    inject: ['eventBus'],
+    props: {
+        name: {
+            type: String | Number,
+            required: true
+        }
+    },
+    created(){
+        this.eventBus.$on('selected',(name) => {
+            console.log(name);
+        })
+    }
 }
 </script>
 

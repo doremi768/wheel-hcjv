@@ -36,21 +36,21 @@
 </head>
 <body>
     <div id="app">
-        <w-tabs :selected.sync="selecteTab">
-            <w-tabs-head>
+        <w-tabs selected.sync="selecteTeb">
+        <!-- <w-tabs selected="selecteTeb" @selected="selecteTab = $event"> -->
+            <w-tabs-head class="frank">
                 <template slot="actions">
                     <button>设置</button>
                 </template>
-                <w-tabs-item name="a">aaa</w-tabs-item>
-                <w-icon name="settings"></w-icon>
+                <w-tabs-item name="a"><w-icon name="settings"></w-icon>aaa</w-tabs-item>
                 <w-tabs-item name="b">bbb</w-tabs-item>
                 <w-tabs-item name="c">ccc</w-tabs-item>
             </w-tabs-head>
-            <w--tabs-body>
-                <w-tabs-item name="a">aaa111</w-tabs-item>
-                <w-tabs-item name="b">bbb111</w-tabs-item>
-                <w-tabs-item name="c">ccc111</w-tabs-item>
-            </w--tabs-body>
+            <w-tabs-body>
+                <w-tabs-panel name="a">aaa111</w-tabs-panel>
+                <w-tabs-panel name="b">bbb111</w-tabs-panel>
+                <w-tabs-panel name="c">ccc111</w-tabs-panel>
+            </w-tabs-body>
         </w-tabs>
     </div>
     
