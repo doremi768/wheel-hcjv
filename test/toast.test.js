@@ -24,7 +24,7 @@ describe('Toast', () => {
                 done();
             })
         })
-        it('接受 closeButton 属性 ',() => {
+        it('接受 closeButton 属性 ',(done) => {
             const callback = sinon.fake();
             
             let Constructor = Vue.extend(Toast);
@@ -38,8 +38,11 @@ describe('Toast', () => {
             }).$mount();
             let closeButton = vm.$el.querySelector('.close');
             expect(closeButton.textContent.trim()).to.eq('关闭');  
-            // closeButton.click();
-            // expect(callback).to.have.been.called; 
+            setTimeout(()=>{
+                closeButton.click();
+                expect(callback).to.have.been.called; 
+                done();
+            },0)
         })
         it('接受 enableHtml 属性 ',() => {
             let Constructor = Vue.extend(Toast);
@@ -61,7 +64,7 @@ describe('Toast', () => {
                 }
             })
             vm.$mount();
-            expect(vm.$el.classList[1]).to.eq('position-bottom');
+            expect(vm.$el.classList.contains('position-bottom')).to.eq(true);
         })
     })
 })
