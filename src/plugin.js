@@ -4,7 +4,6 @@ let currentToast;
 export default {
     install(Vue,options) {
         Vue.prototype.$toast = function(message,toastOptions) {
-            console.log(currentToast)
             if(currentToast){
                 currentToast.close();
             }

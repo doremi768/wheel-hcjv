@@ -14,10 +14,6 @@
 <script>
 export default {
     props: {
-        autoClose: {
-            type: Boolean,
-            default: true
-        },
         autoCloseDelay: {
             type: Number,
             default: 2
@@ -49,11 +45,10 @@ export default {
     },
     methods: {
         execAutoClose(){
-            if(this.autoClose){
-                setTimeout(() => {
+                let timer = setTimeout(() => {
+                    clearTimeout(timer);
                     this.close();
                 }, this.autoCloseDelay * 1000);
-            }
         },
         updateStyles(){
             this.$nextTick(()=>{
