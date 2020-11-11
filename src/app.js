@@ -1,11 +1,16 @@
 import Vue from 'vue'
-import Button from './button.vue'
-import Icon from './icon.vue'
-import ButtonGroup from './button-group.vue'
-import Row from './row.vue'
-import Col from './col.vue'
-import Toast from './toast.vue'
+import Button from './button'
+import Icon from './icon'
+import ButtonGroup from './button-group'
+import Row from './row'
+import Col from './col'
+import Toast from './toast'
 import plugin from './plugin'
+import Tabs from './tabs'
+import TabsHead from './tabs-head'
+import TabsBody from './tabs-body'
+import TabsItem from './tabs-item'
+import TabsPanel from './tabs-panel'
 
 Vue.component('w-button',Button);
 Vue.component('w-icon',Icon);
@@ -13,39 +18,17 @@ Vue.component('w-button-group',ButtonGroup);
 Vue.component('w-row',Row);
 Vue.component('w-col',Col);
 Vue.component('w-toast',Toast);
+Vue.component('w-tabs',Tabs)
+Vue.component('w-tabs-head',TabsHead)
+Vue.component('w-tabs-body',TabsBody)
+Vue.component('w-tabs-item',TabsItem)
+Vue.component('w-tabs-panel',TabsPanel)
+
 Vue.use(plugin);
 
 new Vue({
     el: '#app',
     methods: {
-        showToast1(){
-            this.$toast(`sdffd，，，${parseInt(Math.random() * 100)}`,{
-                position: 'top',
-                closeButton: {
-                    text: '关闭'
-                }
-            });
-        },
-        showToast2(){
-            this.$toast(`sdffd，，，${parseInt(Math.random() * 100)}`,{
-                position: 'middle',
-                closeButton: {
-                    text: '关闭'
-                }
-            });
-        },
-        showToast3(){
-            this.$toast(`sdffd，，，${parseInt(Math.random() * 100)}`,{
-                position: 'bottom',
-                closeButton: {
-                    text: '关闭'
-                }
-            });
-        },
-        showToast4(){
-            this.$toast(`sdffd，，，${parseInt(Math.random() * 100)}`,{
-                position: 'middle',
-            });
-        }
+        
     }
 })
