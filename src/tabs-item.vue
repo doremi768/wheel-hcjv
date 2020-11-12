@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-item" :class="classes" @click="trigger">
+    <div class="tabs-item" :class="classes" @click="trigger" :data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -12,6 +12,7 @@ export default {
             active: false
         }
     },
+    inject: ['eventBus'],
     props: {
         disabled: {
             type: Boolean,
@@ -22,7 +23,6 @@ export default {
             required: true
         }
     },
-    inject: ['eventBus'],
     computed: {
         classes() {
             return {
@@ -32,14 +32,18 @@ export default {
         }
     },
     created(){
-        this.eventBus.$on('selected',(name) => {
-            this.active = this.name === name;
-        })
+        if(this.eventBus){
+            this.eventBus.$on('selected',(name) => {
+                this.active = this.name === name;
+            })
+        }
     },
     methods: {
         trigger(){
             if(this.disabled) {return};
-            this.eventBus.$emit('selected',this.name,this);
+            if(this.eventBus){
+                this.eventBus.$emit('selected',this.name,this);
+            }
         }
     }
 }
@@ -60,6 +64,7 @@ $disabled-color: #ccc;
         }
         &.disabled{
             color: $disabled-color;
+            cursor: not-allowed;
         }
     }
 </style>
