@@ -1,7 +1,7 @@
 <template>
     <div class="tabs-head">
         <slot></slot>
-        <div class="line"></div>
+        <div class="line" ref="line"></div>
         <div  class="actions-wrapper">
             <slot name="actions"></slot>
         </div>
@@ -14,8 +14,9 @@ export default {
     inject: ['eventBus'],
     created(){
         this.eventBus.$on('selected',(item,vm) => {
-            console.log(item)
-            console.log(vm.$el)
+            this.$refs.line.style.width = `${vm.$el.offsetWidth}px`;
+            this.$refs.line.style.transform = `translateX(${vm.$el.offsetLeft}px)`;
+            
         })
     }
 }
@@ -35,6 +36,7 @@ $tab-height: 40px;
             left: 0;
             width: 100px;
             border-bottom: 3px solid #41B883;
+            transition: transform 350ms;
         }
 
         > .actions-wrapper{

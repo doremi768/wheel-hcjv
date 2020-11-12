@@ -35,9 +35,9 @@ export default {
         
         this.$children.forEach((vm)=>{
             if(vm.$options.name === 'tabsHead'){
-                vm.$children.forEach((item)=>{
-                    if(item.$options.name === 'tabsItem' && item.name === this.selected){
-                        this.eventBus.$emit('selected',this.selected,item);
+                vm.$children.forEach((childVm)=>{
+                    if(childVm.$options.name === 'tabsItem' && childVm.name === this.selected){
+                        this.eventBus.$emit('selected',this.selected,childVm);
                     }
                 })
             }

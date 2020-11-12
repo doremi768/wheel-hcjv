@@ -51,7 +51,6 @@ export default {
         padding: 0 2em;
         height: 100%;
         cursor: pointer;
-
         &.active{
             color: #41B883;
             // border-bottom: 3px solid #41B883;
