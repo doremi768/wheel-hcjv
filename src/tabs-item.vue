@@ -26,7 +26,8 @@ export default {
     computed: {
         classes() {
             return {
-                active: this.active
+                active: this.active,
+                disabled: this.disabled
             }
         }
     },
@@ -37,6 +38,7 @@ export default {
     },
     methods: {
         trigger(){
+            if(this.disabled) {return};
             this.eventBus.$emit('selected',this.name,this);
         }
     }
@@ -44,6 +46,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$active-color: #41B883;
+$disabled-color: #ccc;
     .tabs-item{
         display: flex;
         align-items: center;
@@ -52,8 +56,10 @@ export default {
         height: 100%;
         cursor: pointer;
         &.active{
-            color: #41B883;
-            // border-bottom: 3px solid #41B883;
+            color: $active-color;
+        }
+        &.disabled{
+            color: $disabled-color;
         }
     }
 </style>
