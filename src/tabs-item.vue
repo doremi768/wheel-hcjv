@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         trigger(){
-            this.eventBus.$emit('selected',this.name);
+            this.eventBus.$emit('selected',this.name,this);
         }
     }
 }
@@ -45,11 +45,16 @@ export default {
 
 <style lang="scss" scoped>
     .tabs-item{
+        display: flex;
+        align-items: center;
         flex-shrink: 0;
         padding: 0 2em;
+        height: 100%;
+        cursor: pointer;
 
         &.active{
-            background: green;
+            color: #41B883;
+            // border-bottom: 3px solid #41B883;
         }
     }
 </style>

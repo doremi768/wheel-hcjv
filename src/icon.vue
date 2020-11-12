@@ -10,8 +10,9 @@ export default {
 </script>
 <style lang="scss">
     .icon{
-        margin-top: .2em;
+        margin: .2em;
         width: 1em;
         height: 1em;
+        vertical-align: middle;
     }
 </style>
