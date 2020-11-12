@@ -24,18 +24,19 @@ export default {
 
 <style lang="scss" scoped>
 $tab-height: 40px;
+$tab-border-bottom: 1px solid #DCDCDC;
+$line-border-bottom: 3px solid #41B883;
     .tabs-head{
         display: flex;
         height: $tab-height;
         margin: 0 auto;
-        border-bottom: 1px solid #DCDCDC;
+        border-bottom: $tab-border-bottom;
         position: relative;
         .line {
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100px;
-            border-bottom: 3px solid #41B883;
+            border-bottom: $line-border-bottom;
             transition: transform 350ms;
         }
 
