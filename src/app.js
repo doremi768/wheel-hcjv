@@ -28,6 +28,11 @@ Vue.use(plugin);
 
 new Vue({
     el: '#app',
+    data() {
+        return {
+            selecteTeb: 'a'
+        }
+    },
     methods: {
     },
 })

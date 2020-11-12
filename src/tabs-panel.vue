@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs-panel">
+    <div class="tabs-panel" :class="classes" v-if="active">
         <slot></slot>
     </div>
 </template>
@@ -8,15 +8,27 @@
 export default {
     name: 'tabsPanel',
     inject: ['eventBus'],
+    data() {
+        return {
+            active: false
+        }
+    },
     props: {
         name: {
             type: String | Number,
             required: true
         }
     },
-    created(){
+    computed: {
+        classes() {
+            return {
+                active: this.active
+            }
+        }
+    },
+    mounted(){
         this.eventBus.$on('selected',(name) => {
-            console.log(name);
+            this.active = this.name === name;
         })
     }
 }
@@ -24,6 +36,8 @@ export default {
 
 <style lang="scss" scoped>
     .tabs-panel{
-
+        &.active{
+            background: green;
+        }
     }
 </style>
