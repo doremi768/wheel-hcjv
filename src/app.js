@@ -11,7 +11,7 @@ import TabsHead from './tabs-head'
 import TabsBody from './tabs-body'
 import TabsItem from './tabs-item'
 import TabsPanel from './tabs-panel'
-
+import Popover from './popover'
 Vue.component('w-button',Button);
 Vue.component('w-icon',Icon);
 Vue.component('w-button-group',ButtonGroup);
@@ -23,6 +23,7 @@ Vue.component('w-tabs-head',TabsHead)
 Vue.component('w-tabs-body',TabsBody)
 Vue.component('w-tabs-item',TabsItem)
 Vue.component('w-tabs-panel',TabsPanel)
+Vue.component('w-popover',Popover)
 
 Vue.use(plugin);
 
@@ -34,5 +35,12 @@ new Vue({
         }
     },
     methods: {
+        showToast(){
+            this.$toast('abcdefgijk',{
+                closeButton: {
+                    text: '关闭'
+                }
+            })
+        }
     },
 })

@@ -35,7 +35,7 @@ describe('TabsItem', () => {
             el: div
         })
         let Vmitem = document.querySelector('.tabs-item');
-        expect(Vmitem.getAttribute('data-name')).to.eq('a');
+        expect(Vmitem.getAttribute('data-name')).to.eq('a'); 
     })
 
     it('接受 disabled 属性',() => {
