@@ -35,7 +35,7 @@ new Vue({
     el: '#app',
     data() {
         return {
-            selecteTeb: 'a'
+            selecteTeb: '2'
         }
     },
     methods: {
