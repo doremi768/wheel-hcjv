@@ -35,42 +35,32 @@
     </style>
 </head>
 <body>
-    <!-- <div id="app">
+    <div id="app">
         <w-tabs :selected.sync="selecteTeb">
-         <w-tabs selected="selecteTeb" @selected="selecteTab = $event"> 
+         <!-- <w-tabs selected="selecteTeb" @selected="selecteTab = $event">  -->
             <w-tabs-head class="frank">
                 <template slot="actions">
                     <w-button>设置</w-button>
                 </template>
-                <w-tabs-item name="b" >bbb</w-tabs-item>
+                <w-tabs-item name="a" >bbb</w-tabs-item>
                 <w-tabs-item name="c">ccc</w-tabs-item>
-                <w-tabs-item name="d" disabled>dfssafdsfsd</w-tabs-item>
+                <w-tabs-item name="d" >dfssafdsfsd</w-tabs-item>
             </w-tabs-head>
             <w-tabs-body>
-                <w-tabs-panel name="b">bbb111</w-tabs-panel>
+                <w-tabs-panel name="a">bbb111</w-tabs-panel>
                 <w-tabs-panel name="c">ccc111</w-tabs-panel>
                 <w-tabs-panel name="d">ccc1sdfs11</w-tabs-panel>
             </w-tabs-body>
         </w-tabs>
         <w-button icon="loading"></w-button>
         <w-button><div @click="showToast">点击</div></w-button>
-    </div> -->
-        <div id="app" style="padding: 100px; border: 1px solid red;">
-            <div style="border: 1px solid red; padding: 10px;">
-                <w-popover>
-                    <template slot="content">
-                        <div>popover内容</div>
-                    </template>
-                        <button>点击</button>
-                </w-popover>
-                <w-popover>
-                    <template slot="content">
-                        <div>popover内容1</div>
-                    </template>
-                        <button>点击1</button>
-                </w-popover>
-            </div>
+        <w-collapse>
+            <w-collapse-item title="标题一">1</w-collapse-item>
+            <w-collapse-item title="标题二">2</w-collapse-item>
+            <w-collapse-item title="标题三">3</w-collapse-item>
+        </w-collapse>
     </div>
+    
     <script src="src/app.js"></script>
     <script src="//at.alicdn.com/t/font_2185300_ea1wbo3rwni.js"></script>
 </body>
