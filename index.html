@@ -56,18 +56,20 @@
         <w-button><div @click="showToast">点击</div></w-button>
     </div> -->
         <div id="app" style="padding: 100px; border: 1px solid red;">
-        <w-popover>
-            <template slot="content">
-                <div>popover内容</div>
-            </template>
-                <button>点击</button>
-        </w-popover>
-        <w-popover>
-            <template slot="content">
-                <div>popover内容1</div>
-            </template>
-                <button>点击1</button>
-        </w-popover>
+            <div style="border: 1px solid red; padding: 10px;">
+                <w-popover>
+                    <template slot="content">
+                        <div>popover内容</div>
+                    </template>
+                        <button>点击</button>
+                </w-popover>
+                <w-popover>
+                    <template slot="content">
+                        <div>popover内容1</div>
+                    </template>
+                        <button>点击1</button>
+                </w-popover>
+            </div>
     </div>
     <script src="src/app.js"></script>
     <script src="//at.alicdn.com/t/font_2185300_ea1wbo3rwni.js"></script>
