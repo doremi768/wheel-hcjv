@@ -13,7 +13,8 @@
 export default {
     data () {
         return {
-            open: false
+            open: false,
+            single: false
         }
     },
     props: {
@@ -23,16 +24,16 @@ export default {
         },
         name: {
             type: String
-        }
+        },
     },
     inject: ['eventBus'],
-    // inject: {
-    //     eventBus: {default: ''}
-    // },
     mounted(){
             this.eventBus && this.eventBus.$on('update:selected',(name) => {
+                
                 if(name !== this.name){
-                    this.close();
+                    if(this.single){
+                        this.close();
+                    }
                 }else {
                     this.show()
                 }

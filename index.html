@@ -54,8 +54,10 @@
         </w-tabs>
         <w-button icon="loading"></w-button>
         <w-button><div @click="showToast">点击</div></w-button>
-        <w-collapse :selected.sync="selecteTeb">
-            <w-collapse-item title="标题一" name="1">1</w-collapse-item>
+        <w-collapse :selected.sync="selecteTeb" single>
+            <w-collapse-item title="标题一" name="1">
+                1
+            </w-collapse-item>
             <w-collapse-item title="标题二" name="2">2</w-collapse-item>
             <w-collapse-item title="标题三" name="3" >3</w-collapse-item>
            
