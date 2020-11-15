@@ -22,7 +22,8 @@ export default {
                 return value === 'left' || value === 'right';
             }
         }
-    }
+    },
+   
 }
 </script>
 
