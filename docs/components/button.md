@@ -6,7 +6,8 @@
 ```js
 import {ButtonGroup,Button} from 'wheel-hcjv';
 
-Vue.component(ButtonGroup,Button);
+Vue.component(ButtonGroup);
+Vue.component(Button);
 ```
 
 ## 例子

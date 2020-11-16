@@ -29,9 +29,15 @@ export default {
     },
     data() {
         return {
-            gutter: 0
-            
+            gutter:0
         }
+    },
+    mounted() {
+        console.log(this);
+        
+        console.log(this.gutterssss);
+        
+        
     },
     computed: {
         colClass(){
@@ -44,8 +50,8 @@ export default {
         },
         colStyle(){
             return {
-                paddingLeft: this.gutter/2 + 'px',
-                paddingRight: this.gutter/2 + 'px'
+                paddingLeft: -this.gutter/2 + 'px',
+                paddingRight: -this.gutter/2 + 'px'
             }
         }
     }
@@ -65,7 +71,7 @@ export default {
         $class: blank-;
          @for $n from 1 through 12{
             &.#{$class}#{$n}{
-                margin-left: ($n / 12) * 100%;
+                margin-left: ($n / 12) * 100% !important;
             }
         }
      }

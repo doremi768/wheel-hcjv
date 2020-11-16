@@ -1,0 +1,21 @@
+$col-height: 45px;
+$col-bg: #A3E9A4;
+$col-margin: 5px 0;
+$col-border-radius: 8px;
+$col-color: #fff;
+$col-font-size: 18px;
+ .row{
+    .col{
+        height: $col-height;
+        background-color: $col-bg;
+        margin: $col-margin;
+        border-radius: $col-border-radius;
+        text-align: center;
+        line-height: $col-height;
+        color: $col-color;
+        font-size: $col-font-size;
+    }
+    .col:nth-of-type(2n){
+        background-color: #C0E8BF;
+    }
+ }
