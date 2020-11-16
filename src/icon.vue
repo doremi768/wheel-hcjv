@@ -13,14 +13,10 @@ export default {
 <style lang="scss">
     .icon{
         margin: .2em;
-        width: 1em;
-        height: 1em;
+        width: 1.5em;
+        height: 1.5em;
         vertical-align: middle;
-        &.icon {
-            width: 1em; height: 1em;
-            vertical-align: -0.15em;
-            fill: currentColor;
-            overflow: hidden;
-        }
+        fill: currentColor;
+        overflow: hidden;
     }
 </style>
