@@ -1,0 +1,81 @@
+/**
+*   type属性样式
+*/
+
+//type-primary
+$type-primary-bg: rgb(64,158,255);
+$type-primary-color: #fff;
+$type-primary-border-color: rgba(64,158,255,.8);
+$type-primary-hover-bg: rgba(64,158,255,.8);
+$type-primary-active-bg: rgb(44, 138, 235);
+
+ //type-success 
+ $type-success-bg: rgb(103,194,58);
+ $type-success-color: #fff;
+ $type-success-border-color: rgba(103,194,58,.8);
+ $type-success-hover-bg: rgba(103,194,58,.8);
+ $type-success-active-bg: rgb(83, 174, 38);
+
+//type-info
+$type-info-bg: rgb(144,147,153);
+$type-info-color: #fff;
+$type-info-border-color: rgba(144,147,153,.8);
+$type-info-hover-bg: rgba(144,147,153,.8);
+$type-info-active-bg: rgb(124, 127, 133);
+
+//type-warning
+$type-warning-bg: rgb(230,162,60);
+$type-warning-color: #fff;
+$type-warning-border-color: rgba(230,162,60,.8);
+$type-warning-hover-bg: rgba(230,162,60,.8);
+$type-warning-active-bg: rgb(210,142,40);
+
+//type-danger
+$type-danger-bg: rgb(245,108,108);
+$type-danger-color: #fff;
+$type-danger-border-color: rgba(245,108,108,.8);
+$type-danger-hover-bg: rgba(245,108,108,.8);
+$type-danger-active-bg: rgb(225,88,88);
+
+.w-button{
+    &.type-primary{
+        background: $type-primary-bg;
+        color: $type-primary-color;
+        border-color: $type-primary-border-color;
+        &:hover{border-color: $type-primary-border-color;background-color: $type-primary-hover-bg;}
+        &:active{background-color: $type-primary-active-bg;}
+    }
+
+    &.type-success{
+        background: $type-success-bg;
+        color: $type-success-color;
+        border-color: $type-success-border-color;
+        &:hover{border-color: $type-success-border-color;background-color: $type-success-hover-bg;}
+        &:active{background-color: $type-success-active-bg;}
+    }
+
+    &.type-info{
+        background: $type-info-bg;
+        color: $type-info-color;
+        border-color: $type-info-border-color;
+        &:hover{border-color: $type-info-border-color;background-color: $type-info-hover-bg;}
+        &:active{background-color: $type-info-active-bg;}
+    }
+
+    &.type-warning{
+        background: $type-warning-bg;
+        color: $type-warning-color;
+        border-color: $type-warning-border-color;
+        &:hover{border-color: $type-warning-border-color;background-color: $type-warning-hover-bg;}
+        &:active{background-color: $type-warning-active-bg;}
+    }
+
+    &.type-danger{
+        background: $type-danger-bg;
+        color: $type-danger-color;
+        border-color: $type-danger-border-color;
+        &:hover{border-color: $type-danger-border-color;background-color: $type-danger-hover-bg;}
+        &:active{background-color: $type-danger-active-bg;}
+    }
+}
+

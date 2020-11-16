@@ -1,14 +1,15 @@
 <template>
-        <button class="w-button" :class="{[`icon-${iconPosition}`]: true}">
+    <button class="w-button" :class="[{[`icon-${iconPosition}`]: true},{[`type-${type}`]:true}]">
             <w-icon v-if="icon" :name="icon" class="icon" :class="{rotate: icon == 'loading'}"></w-icon>
             <div class="content">
-                 <slot/>
+                <slot/>
             </div>
-        </button>
+    </button>
 </template>
 
 <script>
 import Icon from './icon'
+import '../public/css/button-type.scss'
 export default {
     components: {
         'w-icon': Icon
@@ -21,30 +22,42 @@ export default {
             validator(value){
                 return value === 'left' || value === 'right';
             }
-        }
+        },
+        type: {
+            type: String,
+            default: 'default'
+        },
     },
    
 }
 </script>
 
 <style lang="scss">
-$button-height:32px;
+// 默认样式
+$button-height:40px;
 $font-size:14px;
+$letter-spacing: 2px;
 $button-bg:white;
 $button-active-bg: #eee;
-$border-radius: 4px;
+$border-radius: 5px;
 $color: #333;
-$border-color: #999;
-$border-color-hover: red;
+$border-color: #dcdfe6;
+$border-color-hover: #606266;
+
   @keyframes rotate {
       0%{transform: rotate(0deg);}
       100%{transform: rotate(360deg);}
   }
+  .box{
+      display: inline-block;
+  }
  .w-button{
         font-size: $font-size;
         height: $button-height;
-        padding: 0 1em;
+        padding: 0 .8em;
+        box-sizing: border-box;
         font: inherit;
+        letter-spacing: $letter-spacing;
         border-radius: $border-radius;
         border: 1px solid $border-color;
         background: $button-bg;
@@ -67,6 +80,10 @@ $border-color-hover: red;
         .rotate{
             animation: rotate 1s infinite linear;
         } 
-    }
         
+
+
+       
+    }
+   
 </style>

@@ -13,12 +13,14 @@ module.exports = {
         sidebar: [
             {
                 title: '入门',
+                collapsable: false,
                 children: [
                     '/install/'
                 ]
             },
             {
                 title: '组件',
+                collapsable: false,
                 children: [
                     '/components/button'
                 ]

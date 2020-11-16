@@ -26,9 +26,9 @@
 </head>
 <body>
     <div id="app">
-        <w-tabs :selected.sync="selecteTeb">
+        <!-- <w-tabs :selected.sync="selecteTeb"> -->
          <!-- <w-tabs selected="selecteTeb" @selected="selecteTab = $event">  -->
-            <w-tabs-head class="frank">
+            <!-- <w-tabs-head class="frank">
                 <template slot="actions">
                     <w-button>设置</w-button>
                 </template>
@@ -41,10 +41,15 @@
                 <w-tabs-panel name="c">ccc111</w-tabs-panel>
                 <w-tabs-panel name="d">ccc1sdfs11</w-tabs-panel>
             </w-tabs-body>
-        </w-tabs>
-        <w-button icon="loading"></w-button>
-        <w-button><div @click="showToast">点击</div></w-button>
-        <w-collapse :selected.sync="selecteTeb" single>
+        </w-tabs> -->
+        <w-button type="default">默认按钮</w-button>
+        <w-button type="primary">主要按钮</w-button>
+        <w-button type="success">成功按钮</w-button>
+        <w-button type="info">信息按钮</w-button>
+        <w-button type="warning">警告按钮</w-button>
+        <w-button type="danger">危险按钮</w-button>
+
+        <!-- <w-collapse :selected.sync="selecteTeb" single>
             <w-collapse-item title="标题一" name="1">
                 1
             </w-collapse-item>
@@ -52,7 +57,7 @@
             <w-collapse-item title="标题三" name="3" >3</w-collapse-item>
            
         </w-collapse>
-        {{selecteTeb}}
+        {{selecteTeb}} -->
     </div>
     
     <script src="src/app.js"></script>
