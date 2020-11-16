@@ -32,13 +32,6 @@ export default {
             gutter:0
         }
     },
-    mounted() {
-        console.log(this);
-        
-        console.log(this.gutterssss);
-        
-        
-    },
     computed: {
         colClass(){
             let {span,blank,phone} = this
@@ -50,8 +43,8 @@ export default {
         },
         colStyle(){
             return {
-                paddingLeft: -this.gutter/2 + 'px',
-                paddingRight: -this.gutter/2 + 'px'
+                paddingLeft: this.gutter / 2 + 'px',
+                paddingRight: this.gutter / 2 + 'px',
             }
         }
     }

@@ -6,12 +6,12 @@
         <Col span="3"><div></div></Col>
         <Col span="3"><div></div></Col>
     </Row>
-    <Row class="row" gutter="20">
+    <Row class="row" :gutter="10">
         <Col span="4"><div></div></Col>
         <Col span="4"><div></div></Col>
         <Col span="4"><div></div></Col>
     </Row>
-    <Row class="row">
+    <Row class="row" :gutter="10">
         <Col span="6"><div></div></Col>
         <Col span="6"><div></div></Col>
     </Row>

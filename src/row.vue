@@ -19,7 +19,7 @@ export default {
     },
     mounted() {
         this.$children.forEach((vm) => {
-            vm.gutterssss = this.gutter;
+            vm.gutter = this.gutter;
         })
     },
     computed: {
