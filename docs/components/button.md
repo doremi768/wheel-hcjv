@@ -106,5 +106,5 @@ Vue.component(Button);
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | :-: |:-:| :-:|:-:| :-: | 
 | type | 按钮显示样式 | String | default/primary/success/info/warning/danger | default |         
-| disable | 禁用状态  | Boolean | - | true |
+| disable | 禁用状态  | Boolean | -<img width=500/> | true |
 | iconPosition | 图标定位 | String | left/right | left |

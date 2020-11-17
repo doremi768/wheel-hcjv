@@ -1,19 +1,19 @@
 <template>
  <div class="">
     <Row class="row" :gutter="10">
-        <Col span="3"><div></div></Col>
-        <Col span="3"><div></div></Col>
-        <Col span="3"><div></div></Col>
-        <Col span="3"><div></div></Col>
+        <Col span="3"><div>col-3</div></Col>
+        <Col span="3"><div>col-3</div></Col>
+        <Col span="3"><div>col-3</div></Col>
+        <Col span="3"><div>col-3</div></Col>
     </Row>
     <Row class="row" :gutter="10">
-        <Col span="4"><div></div></Col>
-        <Col span="4"><div></div></Col>
-        <Col span="4"><div></div></Col>
+        <Col span="4"><div>col-4</div></Col>
+        <Col span="4"><div>col-4</div></Col>
+        <Col span="4"><div>col-4</div></Col>
     </Row>
     <Row class="row" :gutter="10">
-        <Col span="6"><div></div></Col>
-        <Col span="6"><div></div></Col>
+        <Col span="6"><div>col-6</div></Col>
+        <Col span="6"><div>col-6</div></Col>
     </Row>
  </div>
 </template>

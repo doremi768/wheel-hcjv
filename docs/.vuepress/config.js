@@ -24,7 +24,9 @@ module.exports = {
                 sidebarDepth: 0,
                 children: [
                     '/components/button',
-                    '/components/grid'
+                    '/components/grid',
+                    '/components/menu',
+
                 ]
             }
         ]

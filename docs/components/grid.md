@@ -90,3 +90,50 @@ Vue.component(Col);
 分栏之间存在一定间距
 
 <w-grid-gutter></w-grid-gutter>
+
+::: details 代码用例
+```html
+<Row class="row" :gutter="10">
+    <Col span="3">col-3</Col>
+    <Col span="3">col-3</Col>
+    <Col span="3">col-3</Col>
+    <Col span="3">col-3</Col>
+</Row>
+<Row class="row" :gutter="10">
+    <Col span="4">col-4</Col>
+    <Col span="4">col-4</Col>
+    <Col span="4">col-4</Col>
+</Row>
+<Row class="row" :gutter="10">
+    <Col span="6">col-6</Col>
+    <Col span="6">col-6</Col>
+</Row>
+```
+:::
+
+### 响应式布局
+目前只设计了设置 `phone` 属性实现响应式布局，当浏览器尺寸小于 576px 时，对布局进行改变。
+
+<w-grid-phone></w-grid-phone>
+
+> 调整浏览器尺寸来查看效果。
+
+::: details 代码用例
+```html
+<Row class="row">
+    <Col span="4" :phone="{span: 2}">col-4/col2</Col>
+    <Col span="4" :phone="{span: 8}">col-4>/col-8</Col>
+    <Col span="4" :phone="{span: 2}">>col-4/col-2</Col>
+</Row>
+```
+:::
+
+## API
+
+| 参数 | 说明 | 类型 | 可选值 | 默认值 |
+| :-: |:-:| :-:|:-:| :-: | 
+| span | 栅格的占位格数 | String/Number | 可选值为0~12的整数 | -<img width=200/> |         
+| blank | 栅格的占位符  |  String/Number | 可选值为0~12的整数 | - |
+| phone | 响应式栅格属性对象 | Object | - | - |
+| align | 栅格对齐方式(作用于Row) | String | left/center/right | left |
+| gutter | 栅格之间的间隔(作用于Row) | String/Number | - | - |

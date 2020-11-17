@@ -34,7 +34,7 @@ $line-border-bottom: 3px solid #41B883;
         position: relative;
         .line {
             position: absolute;
-            bottom: 0;
+            bottom: -1px;
             left: 0;
             border-bottom: $line-border-bottom;
             transition: transform 350ms;
