@@ -4,15 +4,23 @@
         <slot></slot>
      </div>
      <div class="popover">
+         <div v-for="(item,index) in Source" :key="index">
+             <cascader-item :sourceItem="item"></cascader-item>
+         </div>
      </div>
  </div>
 </template>
  
 <script>
+import CascaderItem from './cascader-item'
 export default {
-    data () {
-        return {
-
+    name: 'cascader',
+    components: {
+        CascaderItem
+    },
+    props: {
+        Source: {
+            type: Array
         }
     }
 }
@@ -20,6 +28,7 @@ export default {
  
 <style scoped lang = "scss">
     .cascader {
-
+        width: 500px;
+        height: 600px;
     }
 </style>

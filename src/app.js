@@ -37,16 +37,57 @@ new Vue({
     el: '#app',
     data() {
         return {
-            selecteTeb: '1'
+            source: [
+                {
+                name: '四川',
+                children: [
+                    {name: '成都',
+                    children: [
+                        {name: '锦江区'},
+                        {name: '武侯区'},
+                        {name: '高新区'},
+                    ]},
+                    {name: '内江',
+                    children: [
+                        {name: '内江1区'},
+                        {name: '内江2区'},
+                        {name: '内江3区'},
+                    ]},
+                    {name: '雅安',
+                    children: [
+                        {name: '雅安1区'},
+                        {name: '雅安2区'},
+                        {name: '雅安3区'},
+                    ]},
+                ]
+            },
+            {
+                name: '浙江',
+                children: [
+                    {name: '杭州',
+                    children: [
+                        {name: '上城区'},
+                        {name: '下城区'},
+                        {name: '江干区'},
+                    ]},
+                    {name: '嘉兴',
+                    children: [
+                        {name: '南湖'},
+                        {name: '秀洲'},
+                        {name: '嘉善'},
+                    ]},
+                    {name: '湖州',
+                    children: [
+                        {name: '鼓楼'},
+                        {name: '台江'},
+                        {name: '仓山'},
+                    ]},
+                ]
+            }
+        ]
         }
     },
     methods: {
-        showToast(){
-            this.$toast('abcdefgijk',{
-                closeButton: {
-                    text: '关闭'
-                }
-            })
-        }
+        
     },
 })
