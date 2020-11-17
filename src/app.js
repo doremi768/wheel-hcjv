@@ -13,6 +13,8 @@ import TabsItem from './tabs-item'
 import TabsPanel from './tabs-panel'
 import Collapse from './collapse'
 import CollapseItem from './collapse-item'
+import Cascader from './cascader'
+
 
 Vue.component('w-button',Button);
 Vue.component('w-icon',Icon);
@@ -27,7 +29,7 @@ Vue.component('w-tabs-item',TabsItem)
 Vue.component('w-tabs-panel',TabsPanel)
 Vue.component('w-collapse',Collapse)
 Vue.component('w-collapse-item',CollapseItem)
-
+Vue.component('w-cascader',Cascader)
 
 Vue.use(plugin);
 
