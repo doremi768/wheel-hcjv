@@ -8,7 +8,6 @@
             {{item.name}}
             <span v-if="item.children" style="color: #B8B8B8;">></span>
         </div>
-        
     </div>
     <div class="right" v-if="rightItems">
         <cascader-items :items="rightItems" :height="height" :selected="selected"
@@ -50,6 +49,7 @@ export default {
         onClickLabel(item) {
             let copy = JSON.parse(JSON.stringify(this.selected));
             copy[this.level] = item;
+            copy.splice(this.level + 1);
             this.$emit('update:selected',copy)
         },
         onUpdateSlected(selected){

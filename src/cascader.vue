@@ -34,7 +34,6 @@ export default {
     methods: {
         onUpdateSelected(newSelected) {
             this.$emit('update:selected',newSelected)
-            console.log(newSelected);
         }
     }
 }
