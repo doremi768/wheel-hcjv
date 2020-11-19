@@ -37,6 +37,7 @@ new Vue({
     el: '#app',
     data() {
         return {
+            selected: [],
             source: [
                 {
                 name: '四川',

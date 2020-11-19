@@ -39,7 +39,8 @@
         {{selecteTeb}} -->
 
 
-        <w-cascader :Source="source" popover-height="200px">
+        <w-cascader :Source="source" popover-height="200px" 
+        :selected.sync="selected" :selected="selected" @update:selected="selected = $event">
         </w-cascader>
         <p>12</p>
 
