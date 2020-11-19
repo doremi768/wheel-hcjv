@@ -1,12 +1,12 @@
 <template>
- <div class="cascader-item">
+ <div class="cascader-item" :style="{'height': height}">
     <div class="left">
         <div class="label" v-for="(item,index) in items" :key="index" @click="leftSelected = item">
             {{item.name}}
         </div>
     </div>
     <div class="right" v-if="rightItems">
-        <cascader-items :items="rightItems"></cascader-items>
+        <cascader-items :items="rightItems" :height="height"></cascader-items>
     </div>
  </div>
 </template>
@@ -17,7 +17,14 @@ export default {
     props: {
         items: {
             type: Array
+        },
+        height: {
+            type: String
         }
+    },
+    mounted(){
+        console.log(this.height);
+        
     },
     data(){
         return {
@@ -42,11 +49,13 @@ export default {
         white-space: nowrap;
         align-items: flex-start;
         justify-content: flex-start;
+        height: 100px;
         .left {
             border: 1px solid red;
+            height: 100%;
         }
         .right {
-            margin-top: -1px;
+            height: 100%;
         }
     }
 </style>
