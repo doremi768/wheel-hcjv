@@ -66,10 +66,13 @@ export default {
         white-space: nowrap;
         align-items: flex-start;
         justify-content: flex-start;
-        height: 100px;
+        height: 200px;
         font-size: $font-size;
+
         .left {
             height: 100%;
+            overflow: auto;
+
         }
         .right {
             height: 100%;
