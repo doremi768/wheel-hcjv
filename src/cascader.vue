@@ -25,6 +25,9 @@ export default {
         selected: {
             type: Array,
             default: () => {return []}
+        },
+        loadData: {
+            type: Function
         }
     },
     data() {
@@ -35,7 +38,7 @@ export default {
     },
     methods: {
         onUpdateSelected(newSelected) {
-            this.$emit('update:selected',newSelected)
+            this.$emit('update:selected',newSelected);
         }
     },
     computed: {
@@ -51,7 +54,7 @@ export default {
         position: relative;
         .trigger{
             border: 1px solid red;
-            min-width: 200px;
+            min-width: 190px;
             height: 40px;
             display: inline-flex;
             align-items: center;

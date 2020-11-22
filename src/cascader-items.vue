@@ -1,8 +1,5 @@
 <template>
  <div class="cascader-item" :style="{'height': height}">
-     <div>
-     
-     </div>
     <div class="left">
         <div class="label" v-for="(item,index) in items" :key="index" @click="onClickLabel(item)">
             {{item.name}}
@@ -66,7 +63,7 @@ export default {
         white-space: nowrap;
         align-items: flex-start;
         justify-content: flex-start;
-        height: 200px;
+        height: 190px;
         font-size: $font-size;
 
         .left {
