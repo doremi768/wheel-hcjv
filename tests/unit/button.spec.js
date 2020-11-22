@@ -14,8 +14,6 @@ describe('Button.vue', () => {
             }
         })
         const useElement = wrapper.find('use');
-        console.log(useElement.attributes());
-        
         expect(useElement.attributes()['href']).to.equal('#i-settings')
     })
     it('可以设置loading.', () => {
@@ -27,15 +25,18 @@ describe('Button.vue', () => {
         const useElement = wrapper.find('use');
         expect(useElement.attributes()['href']).to.equal('#i-loading')
     })
-    it('icon 默认的 order 是 1', () => {
+    xit('icon 默认的 order 是 1', () => {
         const wrapper = mount(Button,{
             propsData: {
                 icon: 'settings'
             }
         })
-        // expect(getComputedStyle(icon.selector).order).to.eq('1')
+        const icon = vm.$el.querySelector('svg')
+        expect(getComputedStyle(icon).order).to.eq('1')
+        vm.$el.remove()
+        vm.$destroy()
     })
-    it('设置 iconPosition 可以改变 order', () => {
+    xit('设置 iconPosition 可以改变 order', () => {
         const div = document.createElement('div')
         document.body.appendChild(div)
         const Constructor = Vue.extend(Button)

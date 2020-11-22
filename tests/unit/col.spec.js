@@ -1,8 +1,7 @@
-const expect = chai.expect;
 import Vue from 'vue'
-import Col from '../src/col.vue'
-Vue.config.productionTip = false
-Vue.config.devtools = false
+import { expect } from 'chai'
+import { shallowMount, mount } from '@vue/test-utils'
+import Col from '@/col.vue'
 
 describe('Col', () => {
     it('存在.', () => {
