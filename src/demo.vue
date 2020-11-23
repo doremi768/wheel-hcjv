@@ -33,9 +33,12 @@ export default {
  
 <style scoped lang = "scss">
     .box {
-        width: 200px;
-        height: 150px;
-        background: #ccc;
-        border: 1px solid red;
+        width: 100%;
+        height: 350px;
+        background: #f1f1f1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
     }
 </style>
