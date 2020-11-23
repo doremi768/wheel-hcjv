@@ -8,6 +8,7 @@
  
 <script>
 export default {
+    name: 'SlidesItem',
     data() {
         return {
             selected: undefined,
