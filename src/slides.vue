@@ -3,11 +3,17 @@
      <div class="w-slides-window">
         <slot></slot>
      </div>
+     <div class="w-dots">
+         <span v-for="(n,index) in childrenLength" :key="index" 
+         :class="{active: selectedIndex === n-1}" @click="select(n - 1)">
+             {{n}}
+         </span>
+     </div>
  </div>
 </template>
  
 <script>
-export default {
+export default { 
     props: {
         selected: {
             type: String,
@@ -17,9 +23,24 @@ export default {
             default: true
         }
     },
+    data() {
+        return {
+            childrenLength: 0,
+            lastSelectedIndex: undefined
+        }
+    },
+    computed: {
+        names() {
+            return this.$children.map((vm) => vm.name);
+        },
+        selectedIndex() {
+            return this.names.indexOf(this.selected) || 0;
+        },
+    },
      mounted() {
         this.updateChildren();
         this.automatically();
+        this.childrenLength = this.$children.length;
     },
     updated() {
         this.updateChildren();
@@ -28,17 +49,26 @@ export default {
         updateChildren() {
             let selected = this.getSelected(); 
             this.$children.forEach((vm) => {
-            vm.selected = selected;
+            vm.reverse = this.selectedIndex > this.lastSelectedIndex ? false : true;
+            this.$nextTick(() => {
+                vm.selected = selected;
+            })
             })   
         },
         automatically() {
-            const names = this.$children.map((vm) => vm.name);
-            let index = names.indexOf(this.getSelected());   
-            setInterval(() => {
-                if(index === names.length){index = 0};
-                this.$emit('update:selected',names[index+1])   
-                index++;      
-            },2000)
+            let index = this.names.indexOf(this.getSelected());   
+            let run = () => {
+                let newIndex = index - 1;
+                if(newIndex === -1){newIndex = this.names.length - 1};
+                if(newIndex === this.names.length){newIndex = 0};
+                this.select(newIndex);
+                setTimeout(run,2000);
+            }
+            // setTimeout(run,2000);
+        },
+        select(index) {
+            this.lastSelectedIndex = this.selectedIndex;
+            this.$emit('update:selected',this.names[index]);
         },
         getSelected(){
             let first = this.$children[0];
@@ -55,7 +85,10 @@ export default {
      overflow: hidden;
      position: relative;
      &.w-slides-window{
-
+        
      }
+    .active{
+         background: red;
+    }
  }
 </style>

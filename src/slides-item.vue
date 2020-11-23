@@ -1,6 +1,6 @@
 <template>
      <transition name="slide">
-        <div class="w-slides-window" v-if="visible">
+        <div class="w-slides-window" v-if="visible" :class="{reverse}">
             <slot></slot>
         </div>
      </transition>
@@ -10,7 +10,8 @@
 export default {
     data() {
         return {
-            selected: undefined
+            selected: undefined,
+            reverse: false
         }
     },
     props: {
@@ -30,14 +31,23 @@ export default {
         position: absolute;
         left: 0;
         top: 0;
+        width: 100%;
+        height: 100%;
     }
     .slide-enter-active, .slide-leave-active{
-        transition: all 1s;
+        transition: all 2s;
     }
     .slide-enter{
         transform: translateX(100%);
     }
      .slide-leave-to{
+        transform: translateX(-100%) scale(0.5);
+        
+    }
+    .slide-enter.reverse{
         transform: translateX(-100%);
+    }
+     .slide-leave-to.reverse{
+        transform: translateX(100%) scale(0.5);
     }
 </style>
