@@ -57,7 +57,11 @@ export default {
 </script>
  
 <style scoped lang = "scss">
-@import 'var';
+$input-height: 32px;
+$font-size: 14px;
+$border-left: 1px solid #f1f1f1;
+$padding: .5em 1em 0 1em;
+
     .cascader-item{
         display: flex;
         white-space: nowrap;
