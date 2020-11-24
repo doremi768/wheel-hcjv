@@ -1,44 +1,30 @@
 <template>
  <div class="">
-     <WSlides :selected.sync="selected">
-         <WSlidesItem name="1">
-            <div class="box">1</div>
-         </WSlidesItem>
-         <WSlidesItem name="2">
-            <div class="box">2</div>
-         </WSlidesItem>
-         <WSlidesItem name="3">
-            <div class="box">3</div>
-         </WSlidesItem>
-     </WSlides>
+     <Nav :selected.sync="selectedTab">
+         <NavItem name="home">首页</NavItem>
+         <NavItem name="about">关于</NavItem>
+         <NavItem name="hire">招聘</NavItem>
+     </Nav>
  </div>
 </template>
  
 <script>
-import WSlides from './slides/slides'
-import WSlidesItem from './slides/slides-item'
+import Nav from './nav/nav'
+import NavItem from './nav/nav-item'
+import SubNav from './nav/sub-nav'
+
 export default {
    components: {
-       WSlides,WSlidesItem
+       Nav,NavItem,SubNav
    },
-   data(){
+   data() {
        return {
-           selected: '1'
+           selectedTab: ['home']
        }
    },
-   created() {
-   }
+   
 }
 </script>
  
 <style scoped lang = "scss">
-    .box {
-        width: 100%;
-        height: 350px;
-        background: #f1f1f1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 30px;
-    }
 </style>
