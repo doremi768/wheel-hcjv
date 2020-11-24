@@ -95,7 +95,7 @@ export default {
             let reverse = this.selectedIndex > this.lastSelectedIndex ? false : true;
             
             // if(this.timerId) {
-                 if(this.lastSelectedIndex === this.items.length - 1 && this.selectedIndex === 0){
+                if(this.lastSelectedIndex === this.items.length - 1 && this.selectedIndex === 0){
                     reverse = false
                  }
                 if(this.lastSelectedIndex === 0 && this.selectedIndex === this.items.length - 1){

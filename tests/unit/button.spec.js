@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import Vue from 'vue'
 import { shallowMount, mount } from '@vue/test-utils'
-import Button from '@/button.vue'
+import Button from '@/button/button.vue'
 
 describe('Button.vue', () => {
     it('存在.', () => {

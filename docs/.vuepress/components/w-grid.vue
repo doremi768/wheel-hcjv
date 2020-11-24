@@ -11,7 +11,7 @@
     </Row>
     <Row class="row">
         <Col span="4">33.3%</Col>
-        <Col span="2">33.3%</Col>
+        <Col span="4">33.3%</Col>
         <Col span="4">33.3%</Col>
     </Row>
     <Row class="row">

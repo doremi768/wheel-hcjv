@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Icon from './icon'
-import '../public/css/button-type.scss'
+import Icon from '../icon'
+import '../../public/css/button-type.scss'
 export default {
     components: {
         'w-icon': Icon
