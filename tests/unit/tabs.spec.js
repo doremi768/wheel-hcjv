@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { expect } from 'chai'
 import { shallowMount, mount } from '@vue/test-utils'
 
-import Tabs from '@/tabs.vue'
+import Tabs from '@/tabs/tabs.vue'
 
 describe('Tabs', () => {
     it('存在.', () => {

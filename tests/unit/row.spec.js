@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { expect } from 'chai'
-import Row from '@/row.vue'
+import Row from '@/grid/row.vue'
 
 describe('Row', () => {
     it('存在.', () => {

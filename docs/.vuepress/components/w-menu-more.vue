@@ -21,12 +21,12 @@
 </template>
  
 <script>
-import Tabs from '../../../src/tabs'
-import TabsHead from '../../../src/tabs-head'
-import TabsBody from '../../../src/tabs-body'
-import TabsItem from '../../../src/tabs-item'
-import TabsPanel from '../../../src/tabs-panel'
-import Button from '../../../src/button'
+import Tabs from '../../../src/tabs/tabs'
+import TabsHead from '../../../src/tabs/tabs-head'
+import TabsBody from '../../../src/tabs/tabs-body'
+import TabsItem from '../../../src/tabs/tabs-item'
+import TabsPanel from '../../../src/tabs/tabs-panel'
+import Button from '../../../src/button/button'
 import Icon from '../../../src/icon'
 export default {
     components:{

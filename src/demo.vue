@@ -15,8 +15,8 @@
 </template>
  
 <script>
-import WSlides from './slides'
-import WSlidesItem from './slides-item'
+import WSlides from './slides/slides'
+import WSlidesItem from './slides/slides-item'
 export default {
    components: {
        WSlides,WSlidesItem

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { expect } from 'chai'
 import { shallowMount, mount } from '@vue/test-utils'
-import Col from '@/col.vue'
+import Col from '@/grid/col.vue'
 
 describe('Col', () => {
     it('存在.', () => {

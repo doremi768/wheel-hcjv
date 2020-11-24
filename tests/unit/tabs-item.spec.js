@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { expect } from 'chai'
 import { shallowMount, mount } from '@vue/test-utils'
-import TabsItem from '@/tabs-item.vue'
+import TabsItem from '@/tabs/tabs-item.vue'
 
 describe('TabsItem', () => {
     const div = document.createElement('div');
