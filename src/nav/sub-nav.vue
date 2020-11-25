@@ -2,9 +2,9 @@
  <div class="sub-nav" v-click-outside="close">
      <span class="title" @click="onClick" :class="{selected: open}">
         <slot name="title"></slot>
-        <span class="is-icon">
-            <Icon v-if="open" name="left" class="icon"></Icon>
-            <Icon v-else name="right" class="icon"></Icon>
+        <span class="is-icon" :class="{open}">
+            <!-- <Icon v-if="open" name="left" class="icon"></Icon> -->
+            <Icon name="right" class="icon"></Icon>
         </span>
      </span>
      <div class="sub-nav-popover" v-show="open">
@@ -52,16 +52,13 @@ export default {
         position: relative;
         background: $sub-nav-bg-color;
          .title {
+             position: relative;
              &:hover {
                 color: $theme-color;
            }
            &.selected{
                 color: $sub-nav-title-selected-color;
            }
-           /* .icon {
-               margin-left: 5px;
-               font-size: 10px;
-           } */
            .is-icon {
                display: none;
            }
@@ -91,6 +88,10 @@ export default {
     .sub-nav .sub-nav .is-icon {
         display: inline-flex;
         font-size: .4em;
-        margin-left: 12px;
+        margin-left: 2em;
+            transition: transform .5s;
+            &.open {
+                transform: rotate(180deg);
+            }
     }
 </style>
