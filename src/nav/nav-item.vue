@@ -32,11 +32,36 @@ export default {
 </script>
  
 <style scoped lang = "scss">
+@import '../../public/css/nav.scss';
+
     .nav-item{
-        padding: 10px 20px;
+        padding: $padding;
+        &:hover {
+            color:$theme-color;
+        }
         &.selected {
-        background: red;
+        position: relative;
+        color: $theme-color;
+        &::after{
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: $nav-item-border-bottom-size;
+            background-color: $theme-color;
+        }
         }
     }
-    
+    .sub-nav .nav-item {
+        &:hover {
+            color: $theme-color;
+        }
+        &.selected {
+            color: $theme-color;
+            &::after {
+                display: none;
+            }
+        }
+    }
 </style>

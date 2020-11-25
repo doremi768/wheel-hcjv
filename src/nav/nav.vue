@@ -70,8 +70,10 @@ export default {
 </script>
  
 <style scoped lang = "scss">
+@import '../../public/css/nav.scss';
     .nav{
         display: flex;
-        border: 1px solid red;
+        border-bottom: $nav-border-bottom;
+        cursor: pointer;
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
  <div class="sub-nav">
-     <span @click="onClick">
+     <span @click="onClick" class="title">
         <slot name="title"></slot>
      </span>
      <div class="sub-nav-popover" v-show="open">
@@ -26,10 +26,18 @@ export default {
 </script>
  
 <style scoped lang = "scss">
+@import '../../public/css/nav.scss';
+
     .sub-nav{
         position: relative;
+        background: $sub-nav-bg-color;
+         .title {
+             &:hover {
+                color: $theme-color;
+             }
+        }
         > span{
-            padding: 10px 20px;
+            padding: $padding;
             display: block;
             vertical-align: top;
         }
@@ -37,12 +45,17 @@ export default {
             position: absolute;
             top: 100%;
             left: 0;
-            border: 1px solid black;
+            margin-top: $popover-margin-top;
+            border: $popover-border;
+            box-shadow: $popover-box-shadow;
             white-space: nowrap;
+            min-width: $popover-min-width;
         }
     }
     .sub-nav .sub-nav .sub-nav-popover {
         top: 0;
         left: 100%;
+        margin-left: $children-popover-margin-left;
     }
+   
 </style>

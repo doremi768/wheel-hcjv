@@ -12,12 +12,13 @@
             </SubNav>
             <SubNav>
                 <template slot="title">联系方式</template>
-                <NavItem name="QQ">QQ</NavItem>
-                <NavItem name="weixin">微信</NavItem>
+                <NavItem name="QQ1">QQ</NavItem>
+                <NavItem name="weixin1">微信</NavItem>
             </SubNav>
           </SubNav>
          <NavItem name="hire">招聘</NavItem>
      </Nav>
+     <p class="content">sdfdsfsdfs</p>
  </div>
 </template>
  
@@ -40,4 +41,7 @@ export default {
 </script>
  
 <style scoped lang = "scss">
+    .content{
+        padding: 30px;
+    }
 </style>
