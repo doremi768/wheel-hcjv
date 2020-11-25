@@ -2,15 +2,15 @@
  <div class="">
      <Nav :selected.sync="selectedTab">
          <NavItem name="home">首页</NavItem>
-          <SubNav>
+          <SubNav name="about">
             <template slot="title">关于</template>
             <NavItem name="culture">企业文化</NavItem>
-             <SubNav>
+             <SubNav name="info">
                 <template slot="title">开发团队</template>
                 <NavItem name="QQ">QQ</NavItem>
                 <NavItem name="weixin">微信</NavItem>
             </SubNav>
-            <SubNav>
+            <SubNav name="phone">
                 <template slot="title">联系方式</template>
                 <NavItem name="QQ1">QQ</NavItem>
                 <NavItem name="weixin1">微信</NavItem>

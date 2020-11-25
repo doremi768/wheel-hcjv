@@ -75,5 +75,6 @@ export default {
         display: flex;
         border-bottom: $nav-border-bottom;
         cursor: pointer;
+        color: $default-color;
     }
 </style>

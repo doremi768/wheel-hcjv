@@ -1,6 +1,6 @@
 <template>
- <div class="sub-nav">
-     <span @click="onClick" class="title">
+ <div class="sub-nav" v-click-outside="close">
+     <span class="title" @click="onClick" :class="{selected: open}">
         <slot name="title"></slot>
      </span>
      <div class="sub-nav-popover" v-show="open">
@@ -10,16 +10,29 @@
 </template>
  
 <script>
+import clickOutside from '../tools/click-outside.js'
 export default {
     name: 'SubNav',
     data () {
         return {
-            open: false
+            open: false,
         }
+    },
+    directives: {'click-outside':clickOutside},
+    props: {
+        name: {
+            type: String,
+            required: true
+        },
+    },
+    created() {
     },
     methods: {
         onClick() {
             this.open = !this.open;
+        },
+        close() {
+            this.open = false;
         }
     },
 }
@@ -27,14 +40,16 @@ export default {
  
 <style scoped lang = "scss">
 @import '../../public/css/nav.scss';
-
     .sub-nav{
         position: relative;
         background: $sub-nav-bg-color;
          .title {
              &:hover {
                 color: $theme-color;
-             }
+           }
+           &.selected{
+                color: $sub-nav-title-selected-color;
+           }
         }
         > span{
             padding: $padding;
