@@ -2,6 +2,10 @@
  <div class="sub-nav" v-click-outside="close">
      <span class="title" @click="onClick" :class="{selected: open}">
         <slot name="title"></slot>
+        <span class="is-icon">
+            <Icon v-if="open" name="left" class="icon"></Icon>
+            <Icon v-else name="right" class="icon"></Icon>
+        </span>
      </span>
      <div class="sub-nav-popover" v-show="open">
         <slot></slot>
@@ -11,6 +15,7 @@
  
 <script>
 import clickOutside from '../tools/click-outside.js'
+import Icon from '../icon.vue'
 export default {
     name: 'SubNav',
     data () {
@@ -24,6 +29,9 @@ export default {
             type: String,
             required: true
         },
+    },
+    components: {
+        Icon
     },
     created() {
     },
@@ -50,6 +58,13 @@ export default {
            &.selected{
                 color: $sub-nav-title-selected-color;
            }
+           /* .icon {
+               margin-left: 5px;
+               font-size: 10px;
+           } */
+           .is-icon {
+               display: none;
+           }
         }
         > span{
             padding: $padding;
@@ -73,5 +88,9 @@ export default {
         left: 100%;
         margin-left: $children-popover-margin-left;
     }
-   
+    .sub-nav .sub-nav .is-icon {
+        display: inline-flex;
+        font-size: .4em;
+        margin-left: 12px;
+    }
 </style>
