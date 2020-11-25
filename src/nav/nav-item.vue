@@ -18,6 +18,11 @@ export default {
             required: true
         },
     },
+    inject: ['root'],
+    created() {
+        
+        this.root.addItems(this);
+    },
     methods: {
         onClick() {
             this.$emit('add:selected',this.name);

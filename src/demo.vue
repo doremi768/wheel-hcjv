@@ -2,7 +2,20 @@
  <div class="">
      <Nav :selected.sync="selectedTab">
          <NavItem name="home">首页</NavItem>
-         <NavItem name="about">关于</NavItem>
+          <SubNav>
+            <template slot="title">关于</template>
+            <NavItem name="culture">企业文化</NavItem>
+             <SubNav>
+                <template slot="title">开发团队</template>
+                <NavItem name="QQ">QQ</NavItem>
+                <NavItem name="weixin">微信</NavItem>
+            </SubNav>
+            <SubNav>
+                <template slot="title">联系方式</template>
+                <NavItem name="QQ">QQ</NavItem>
+                <NavItem name="weixin">微信</NavItem>
+            </SubNav>
+          </SubNav>
          <NavItem name="hire">招聘</NavItem>
      </Nav>
  </div>
@@ -19,7 +32,7 @@ export default {
    },
    data() {
        return {
-           selectedTab: ['home']
+           selectedTab: ['culture']
        }
    },
    

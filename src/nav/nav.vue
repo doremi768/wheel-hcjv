@@ -19,25 +19,28 @@ export default {
     },
     data () {
         return {
+            items: []
         }
     },
-    computed: {
-        item() {
-            return this.$children.filter((vm) => {return vm.$options.name === 'NavItem'});
+    provide() {
+        return {
+            root: this
         }
     },
     mounted() {
         this.updateChildren();
         this.listenToChlidren();
-
     },
     updated(){
         this.updateChildren();
     },
    
     methods:{
+        addItems(vm) {
+            this.items.push(vm);
+        },
         updateChildren() {
-            this.item.forEach((vm) => {
+            this.items.forEach((vm) => {
                 if(this.selected.indexOf(vm.name) >= 0) {
                     vm.selected = true;
                 } else {
@@ -46,7 +49,7 @@ export default {
             })
         },
         listenToChlidren() {
-            this.item.forEach((vm) => {
+            this.items.forEach((vm) => {
                 vm.$on('add:selected',(name)=>{
                     if(this.multiple){
                         if(this.selected.indexOf(vm.name) < 0) {
