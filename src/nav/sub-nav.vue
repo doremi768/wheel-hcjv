@@ -46,10 +46,11 @@ export default {
             top: 100%;
             left: 0;
             margin-top: $popover-margin-top;
-            border: $popover-border;
+            /* border: $popover-border; */
             box-shadow: $popover-box-shadow;
             white-space: nowrap;
             min-width: $popover-min-width;
+            border-radius: $popover-border-radius;
         }
     }
     .sub-nav .sub-nav .sub-nav-popover {

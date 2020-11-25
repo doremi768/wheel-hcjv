@@ -11,7 +11,8 @@ $sub-nav-bg-color: #fff;
 
 /*sub-nav-popover*/
 $popover-margin-top: 5px;
-$popover-box-shadow:  0 0 3px fade_out(black,0.8);
+$popover-box-shadow:  0 0 3px fade_out(#ccc,0.4);
 $popover-border: 1px solid #dcdcdc;
 $popover-min-width: 8em;
-$children-popover-margin-left: 1px;
+$popover-border-radius: 5px;
+$children-popover-margin-left: 8px;
