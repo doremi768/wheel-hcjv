@@ -1,5 +1,5 @@
 <template>
- <div class="nav-item" :class="{selected}" @click="onClick">
+ <div class="nav-item" :class="{selected,vertical}" @click="onClick">
      <slot></slot>
  </div>
 </template>
@@ -18,7 +18,7 @@ export default {
             required: true
         },
     },
-    inject: ['root'],
+    inject: ['root','vertical'],
     created() {
         
         this.root.addItems(this);
@@ -51,6 +51,14 @@ export default {
             height: $nav-item-border-bottom-size;
             background-color: $theme-color;
         }
+        }
+        &.vertical{
+            &.selected {
+                color: $theme-color;
+                &::after {
+                    display: none;
+                }
+            }
         }
     }
     .sub-nav .nav-item {

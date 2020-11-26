@@ -1,5 +1,5 @@
 <template>
- <div class="nav">
+ <div class="nav" :class="{vertical}">
      <slot></slot>
  </div>
 </template>
@@ -15,6 +15,10 @@ export default {
         multiple: {
             type: Boolean,
             default: false
+        },
+        vertical: {
+            type: Boolean,
+            default: false
         }
     },
     data () {
@@ -24,7 +28,8 @@ export default {
     },
     provide() {
         return {
-            root: this
+            root: this,
+            vertical: this.vertical
         }
     },
     mounted() {
@@ -76,5 +81,9 @@ export default {
         border-bottom: $nav-border-bottom;
         cursor: pointer;
         color: $default-color;
+        &.vertical{
+            flex-direction: column;
+            border: 1px solid #ccc;
+        }
     }
 </style>
