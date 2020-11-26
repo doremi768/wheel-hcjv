@@ -1,6 +1,6 @@
 <template>
  <div class="">
-     <Nav :selected.sync="selectedTab">
+     <Nav :selected.sync="selected">
          <NavItem name="home"><a href="https://baidu.com" target="_blank">首页</a></NavItem>
           <SubNav name="about">
             <template slot="title">关于</template>
@@ -20,7 +20,7 @@
      </Nav>
      <p class="content">sdfdsfsdfs</p>
      <div style="width: 100px; height: 300px;"></div>
-     <Nav :selected.sync="selectedTab" vertical style="width: 200px;">
+     <Nav :selected.sync="selected" vertical style="width: 200px;">
          <NavItem name="home">首页</NavItem>
           <SubNav name="about">
             <template slot="title">关于</template>
@@ -53,7 +53,7 @@ export default {
    },
    data() {
        return {
-           selectedTab: ['culture']
+           selected: 'home'
        }
    },
    
