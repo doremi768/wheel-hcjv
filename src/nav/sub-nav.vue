@@ -77,7 +77,20 @@ export default {
 </script>
  
 <style scoped lang = "scss">
-@import '../../public/css/nav.scss';
+$padding: 10px 20px;
+$theme-color: #41B883;
+$default-color: #7C7C7C;
+$sub-nav-bg-color: #fff;
+$sub-nav-title-selected-color: #000;
+
+$popover-margin-top: 5px;
+$popover-box-shadow:  0 0 3px fade_out(#ccc,0.4);
+$popover-border: 1px solid #dcdcdc;
+$popover-min-width: 8em;
+$popover-border-radius: 5px;
+$children-popover-margin-left: 8px;
+
+$vertical-padding-left: 10px;
     .sub-nav{
         position: relative;
         background: $sub-nav-bg-color;                                      

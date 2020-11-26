@@ -1,5 +1,5 @@
 <template>
- <div class="nav-item" :class="{selected,vertical}" @click="onClick">
+ <div class="nav-item" :class="{selected,vertical}" @click="onClick" :data-name="name">
      <slot></slot>
  </div>
 </template>
@@ -20,7 +20,6 @@ export default {
     },
     inject: ['root','vertical'],
     created() {
-        
         this.root.addItems(this);
     },
     methods: {
@@ -32,7 +31,13 @@ export default {
 </script>
  
 <style scoped lang = "scss">
-@import '../../public/css/nav.scss';
+/*common*/
+$padding: 10px 20px;
+$theme-color: #41B883;
+$default-color: #7C7C7C;
+/*nav*/
+$nav-border-bottom: 1px solid #DCDCDC;
+$nav-item-border-bottom-size: 1px;
 
     .nav-item{
         padding: $padding;

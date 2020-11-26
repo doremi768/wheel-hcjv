@@ -62,7 +62,8 @@ export default {
 </script>
  
 <style scoped lang = "scss">
-@import '../../public/css/nav.scss';
+$nav-border-bottom: 1px solid #DCDCDC;
+$default-color: #7C7C7C;
     .nav{
         display: flex;
         border-bottom: $nav-border-bottom;

@@ -4,7 +4,7 @@ import { shallowMount, mount } from '@vue/test-utils'
 import Button from '@/button/button.vue'
 
 describe('Button.vue', () => {
-    it('存在.', () => {
+    it('存在', () => {
         expect(Button).to.be.ok 
     })
     it('可以设置icon.', () => {
