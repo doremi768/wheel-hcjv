@@ -6,7 +6,7 @@ describe('Row', () => {
     it('存在.', () => {
         expect(Row).to.be.ok
     })
-    xit('接收 align 属性', () => {
+    it('接收 align 属性', () => {
         const div = document.createElement('div')
         document.body.appendChild(div)
         const Constructor = Vue.extend(Row)

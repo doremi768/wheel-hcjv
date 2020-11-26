@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { expect } from 'chai'
+import sinon from 'sinon'
 import { shallowMount, mount } from '@vue/test-utils'
 import Toast from '@/toast.vue'
 
@@ -23,7 +24,7 @@ describe('Toast', () => {
                 done();
             })
         })
-        xit('接受 closeButton 属性 ',(done) => {
+        it('接受 closeButton 属性 ',(done) => {
             const callback = sinon.fake();
             
             let Constructor = Vue.extend(Toast);
@@ -39,7 +40,7 @@ describe('Toast', () => {
             expect(closeButton.textContent.trim()).to.eq('关闭');  
             setTimeout(()=>{
                 closeButton.click();
-                expect(callback).to.have.been.called; 
+                expect(callback.called).to.be.true;
                 done();
             },0)
         })

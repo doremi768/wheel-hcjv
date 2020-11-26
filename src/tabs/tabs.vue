@@ -11,7 +11,7 @@ export default {
     props: {
         selected: {
             type: String,
-            required: true
+            default: undefined
         },
         direction: {
             type: String,

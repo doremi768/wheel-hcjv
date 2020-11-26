@@ -25,18 +25,21 @@ describe('Button.vue', () => {
         const useElement = wrapper.find('use');
         expect(useElement.attributes()['href']).to.equal('#i-loading')
     })
-    xit('icon 默认的 order 是 1', () => {
-        const wrapper = mount(Button,{
-            propsData: {
-                icon: 'settings'
-            }
-        })
+    it('icon 默认的 order 是 1', () => {
+        const div = document.createElement('div')
+        document.body.appendChild(div)
+        const Constructor = Vue.extend(Button)
+        const vm = new Constructor({
+        propsData: {
+            icon: 'settings',
+        }
+        }).$mount(div)
         const icon = vm.$el.querySelector('svg')
         expect(getComputedStyle(icon).order).to.eq('1')
         vm.$el.remove()
         vm.$destroy()
     })
-    xit('设置 iconPosition 可以改变 order', () => {
+    it('设置 iconPosition 可以改变 order', () => {
         const div = document.createElement('div')
         document.body.appendChild(div)
         const Constructor = Vue.extend(Button)
