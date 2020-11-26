@@ -2,11 +2,8 @@
  <div class="sub-nav" v-click-outside="close">
     <span class="title" @click="onClick" :class="{selected: open}">
         <slot name="title"></slot>
-        <span v-if='!vertical' class="is-icon" :class="{open}">
+        <span class="is-icon" :class="{open,vertical}">
             <Icon name="right" class="icon"></Icon>
-        </span>
-        <span v-else class="is-icon icon-top" :class="{open}">
-            <Icon name="top" class="icon"></Icon>
         </span>
     </span>
     <template v-if="!vertical">
@@ -93,7 +90,6 @@ export default {
                 color: $sub-nav-title-selected-color;
            }
            .is-icon {
-               /* display: none; */
                 display: inline-flex;
                 font-size: .4em;
                 margin-left: 2em;
@@ -101,10 +97,14 @@ export default {
                 &.open {
                 transform: rotate(180deg);
                 }
-                &.icon-top{
+                 &.vertical{
                     float: right;
                     margin-top: 1em;
+                    transform: rotate(90deg);
+                    &.open {
+                    transform: rotate(270deg);
                 }
+        }
            }
         }
         > span{
@@ -145,9 +145,13 @@ export default {
         &.open {
             transform: rotate(180deg);
         }
-        &.icon-top{
+        &.vertical{
             float: right;
             margin-top: 1em;
+            transform: rotate(90deg);
+            &.open {
+                transform: rotate(270deg);
+            }
         }
     }
 </style>

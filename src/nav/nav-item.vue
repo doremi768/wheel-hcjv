@@ -50,7 +50,11 @@ export default {
             width: 100%;
             height: $nav-item-border-bottom-size;
             background-color: $theme-color;
+            }
         }
+        a {
+            color: inherit;
+            text-decoration: none;
         }
         &.vertical{
             &.selected {

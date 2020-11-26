@@ -1,7 +1,7 @@
 <template>
  <div class="">
      <Nav :selected.sync="selectedTab">
-         <NavItem name="home">首页</NavItem>
+         <NavItem name="home"><a href="https://baidu.com" target="_blank">首页</a></NavItem>
           <SubNav name="about">
             <template slot="title">关于</template>
             <NavItem name="culture">企业文化</NavItem>
