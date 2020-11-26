@@ -1,6 +1,6 @@
 <template>
  <div class="sub-nav" v-click-outside="close">
-     <span class="title" @click="onClick" :class="{selected: open}">
+    <span class="title" @click="onClick" :class="{selected: open}">
         <slot name="title"></slot>
         <span v-if='!vertical' class="is-icon" :class="{open}">
             <Icon name="right" class="icon"></Icon>
@@ -8,12 +8,19 @@
         <span v-else class="is-icon icon-top" :class="{open}">
             <Icon name="top" class="icon"></Icon>
         </span>
-     </span>
-    <transition v-on:enter="enter" v-on:after-enter="afterEnter" v-on:leave="leave"  v-on:after-leave="afterLeave">
+    </span>
+    <template v-if="!vertical">
         <div class="sub-nav-popover" v-show="open" :class="{vertical}">
-            <slot></slot>
+                <slot></slot>
         </div>
-    </transition>
+    </template>
+    <template  v-else>
+        <transition v-on:enter="enter" v-on:after-enter="afterEnter" v-on:leave="leave"  v-on:after-leave="afterLeave">
+            <div class="sub-nav-popover" v-show="open" :class="{vertical}">
+                <slot></slot>
+            </div>
+        </transition>
+    </template>
  </div>
 </template>
 <script>
@@ -120,8 +127,8 @@ export default {
                 border: none;
                 box-shadow: none;
                 padding-left: $vertical-padding-left;
-                transition: height .5s;
                 overflow: hidden;
+                transition: height .5s;
             }
         }
     }
