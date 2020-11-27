@@ -3,10 +3,17 @@
     <table class="table" :class="{bordered}">
         <thead>
             <tr>
-                <th v-if="select"><input type="checkbox" @change="onChangeAllItem" ref="allChecked"></th>
+                <th v-if="select"><input type="checkbox" @change="onChangeAllItem" ref="allChecked"
+                :checked="areAllItemSelected"></th>
                 <th v-if="numberVisible">#</th>
                 <th v-for="column in columns" :key="column.field">
-                    {{column.text}}
+                    <div class="table-header">
+                        {{column.text}}
+                        <span class="sorter">
+                            <Icon name="up"></Icon>
+                            <Icon name="down2"></Icon>
+                        </span>
+                    </div>
                 </th>
             </tr>
         </thead>
@@ -27,12 +34,14 @@
 </template>
  
 <script>
+import Icon from './icon.vue'
 export default {
     data () {
         return {
 
         }
     },
+    components: {Icon},
     watch: {
         selectedItems() {
             if(this.selectedItems.length === this.dataSource.length) {
@@ -42,6 +51,21 @@ export default {
             } else {
                 this.$refs.allChecked.indeterminate = true;
             }
+        }
+    },
+    computed: {
+        areAllItemSelected() {
+            let a = this.dataSource.map(item => item.id).sort();
+            let b = this.selectedItems.map(item => item.id).sort();
+            let equal = true;
+            if(a.length !== b.length) {return false;} 
+            for(let i = 0 ; i < a.length; i++) {
+                if(a[i] !== b[i]) {
+                    equal = false;
+                    break;
+                }
+            }
+            return equal;
         }
     },
     props: {
@@ -117,6 +141,31 @@ $cell-text-align: left;
             border: $cell-border;
             }
         }
+        th {
+            .table-header {
+                display: flex;
+                align-items: center;
+                .sorter {
+                    display: inline-flex;
+                    flex-direction: column;
+                    cursor: pointer;
+                    svg {
+                        width: 10px;
+                        height: 10px;
+                        margin: 0 8px;
+                        fill: #ccc;
+                        &:first-child {
+                            position: relative;
+                            bottom: -2px;
+                        }
+                        &:nth-child(2) {
+                            position: relative;
+                            top: 2px;
+                        }
+                    }
+                }
+            }
+        }
         td,th {
             padding: $cell-padding;
             border-bottom: $cell-border-bottom;
@@ -133,4 +182,5 @@ $cell-text-align: left;
             }
         }
     }
+
 </style>

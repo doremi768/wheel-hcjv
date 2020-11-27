@@ -1,6 +1,6 @@
 <template>
  <div class="">
-     {{selected}}
+     <!-- {{selected}} -->
      <Table :selected-items.sync="selected" :columns="columns" :dataSource="dataSource" bordered></Table>
  </div>
 </template>
