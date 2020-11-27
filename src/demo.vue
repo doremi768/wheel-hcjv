@@ -1,61 +1,37 @@
 <template>
  <div class="">
-     <Nav :selected.sync="selected">
-         <NavItem name="home">首页</NavItem>
-          <SubNav name="about">
-            <template slot="title">关于</template>
-            <NavItem name="culture">企业文化</NavItem>
-             <SubNav name="info">
-                <template slot="title">开发团队</template>
-                <NavItem name="QQ">QQ</NavItem>
-                <NavItem name="weixin">微信</NavItem>
-            </SubNav>
-            <SubNav name="phone">
-                <template slot="title">联系方式</template>
-                <NavItem name="QQ1">QQ</NavItem>
-                <NavItem name="weixin1">微信</NavItem>
-            </SubNav>
-          </SubNav>
-         <NavItem name="hire">招聘</NavItem>
-     </Nav>
-     <p class="content">sdfdsfsdfs</p>
-     <div style="width: 100px; height: 300px;"></div>
-     <Nav :selected.sync="selected" vertical style="width: 200px;">
-         <NavItem name="home">首页</NavItem>
-          <SubNav name="about">
-            <template slot="title">关于</template>
-            <NavItem name="culture">企业文化</NavItem>
-             <SubNav name="info">
-                <template slot="title">开发团队</template>
-                <NavItem name="QQ">QQ</NavItem>
-                <NavItem name="weixin">微信</NavItem>
-            </SubNav>
-            <SubNav name="phone">
-                <template slot="title">联系方式</template>
-                <NavItem name="QQ1">QQ</NavItem>
-                <NavItem name="weixin1">微信</NavItem>
-            </SubNav>
-          </SubNav>
-         <NavItem name="hire">招聘</NavItem>
-     </Nav>
-     <div style="width: 100px; height: 300px;"></div>
+     <Table :columns="columns" :dataSource="dataSource" bordered stripe @changeItem="x"></Table>
  </div>
 </template>
  
 <script>
-import Nav from './nav/nav'
-import NavItem from './nav/nav-item'
-import SubNav from './nav/sub-nav'
-
+import Table from './table.vue'
 export default {
    components: {
-       Nav,NavItem,SubNav
+       Table
    },
-   data() {
-       return {
-           selected: 'home'
-       }
-   },
+  data() {
+      return {
+          columns: [
+              {text: '姓名',field: 'name'},
+              {text: '分数',field: 'score'}
+          ],
+          dataSource: [
+              {id: 1,name: 'AAA',score: 100},
+              {id: 1,name: 'BBB',score: 99},
+              {id: 1,name: 'CCC',score: 54},
+              {id: 1,name: 'DDD',score: 76},
+              {id: 1,name: 'EEE',score: 79},
+              {id: 1,name: 'FFF',score: 65},
+              {id: 1,name: 'GGG',score: 23}
+          ]
+      }
+  },
+  methods: {
+      x(obj){
+          console.log(obj)
+      }
+  }
    
 }
 </script>
