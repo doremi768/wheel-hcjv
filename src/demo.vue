@@ -1,7 +1,7 @@
 <template>
  <div class="">
      {{selected}}
-     <Table :selected-items.sync="selected" :columns="columns" :dataSource="dataSource" bordered stripe></Table>
+     <Table :selected-items.sync="selected" :columns="columns" :dataSource="dataSource" bordered></Table>
  </div>
 </template>
  

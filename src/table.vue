@@ -3,21 +3,21 @@
     <table class="table" :class="{bordered}">
         <thead>
             <tr>
-                <th v-if="select"><input type="checkbox" @change="onChangeAllItem"></th>
+                <th v-if="select"><input type="checkbox" @change="onChangeAllItem" ref="allChecked"></th>
                 <th v-if="numberVisible">#</th>
-                <th v-for="(column,index) in columns" :key="index">
+                <th v-for="column in columns" :key="column.field">
                     {{column.text}}
                 </th>
             </tr>
         </thead>
         <tbody :class="{striped}">
-            <tr v-for="(item,index) in dataSource" :key="index">
+            <tr v-for="(item,index) in dataSource" :key="item.id">
                 <td v-if="select">
                     <input type="checkbox" @change="onChangeItem(item,index,$event)"
-                    :checked="selectedItems.filter(i => i.id === item.id).length > 0">
+                    :checked="isSelectedItems(item)">
                 </td>
                 <td v-if="numberVisible">{{index + 1}}</td>
-                <td v-for="(column,index1) in columns" :key="index1">
+                <td v-for="column in columns" :key="column.field">
                     {{item[column.field]}}
                 </td>
             </tr>
@@ -33,6 +33,17 @@ export default {
 
         }
     },
+    watch: {
+        selectedItems() {
+            if(this.selectedItems.length === this.dataSource.length) {
+                this.$refs.allChecked.indeterminate = false;
+            } else if(this.selectedItems.length === 0) {
+                this.$refs.allChecked.indeterminate = false;
+            } else {
+                this.$refs.allChecked.indeterminate = true;
+            }
+        }
+    },
     props: {
         columns: {
             type: Array,
@@ -40,7 +51,10 @@ export default {
         },
         dataSource: {
             type: Array,
-            required: true
+            required: true,
+            validator(array) {
+               return !(array.filter(item => item.id === undefined).length > 0);
+            }
         },
         numberVisible: {
             type: Boolean,
@@ -70,13 +84,16 @@ export default {
             if(selected) {
                 copy.push(item);
             } else {
-                copy.splice(copy.indexOf(item),1);
+                copy = copy.filter(i => i.id !== item.id);
             }
             this.$emit('update:selectedItems',copy);
         },
         onChangeAllItem(e) {
             let selected = e.target.checked;
             this.$emit('update:selectedItems',selected ? this.dataSource : []);
+        },
+        isSelectedItems(item) {
+            return this.selectedItems.filter(i => i.id === item.id).length > 0;
         }
     }
 }
