@@ -3,7 +3,7 @@
     <table class="table" :class="{bordered}">
         <thead>
             <tr>
-                <th v-if="select"><input type="checkbox"></th>
+                <th v-if="select"><input type="checkbox" @change="onChangeAllItem"></th>
                 <th v-if="numberVisible">#</th>
                 <th v-for="(column,index) in columns" :key="index">
                     {{column.text}}
@@ -12,7 +12,10 @@
         </thead>
         <tbody :class="{striped}">
             <tr v-for="(item,index) in dataSource" :key="index">
-                <td v-if="select"><input type="checkbox" @change="onChangeItem(item,index,$event)"></td>
+                <td v-if="select">
+                    <input type="checkbox" @change="onChangeItem(item,index,$event)"
+                    :checked="selectedItems.filter(i => i.id === item.id).length > 0">
+                </td>
                 <td v-if="numberVisible">{{index + 1}}</td>
                 <td v-for="(column,index1) in columns" :key="index1">
                     {{item[column.field]}}
@@ -54,11 +57,26 @@ export default {
         select: {
             type: Boolean,
             default: true
+        },
+        selectedItems: {
+            type: Array,
+            default: () => []
         }
     },
     methods: {
         onChangeItem(item,index,e) {
-            this.$emit('changeItem',{selected: e.target.checked,item,index});
+            let selected = e.target.checked;
+            let copy= JSON.parse(JSON.stringify(this.selectedItems));
+            if(selected) {
+                copy.push(item);
+            } else {
+                copy.splice(copy.indexOf(item),1);
+            }
+            this.$emit('update:selectedItems',copy);
+        },
+        onChangeAllItem(e) {
+            let selected = e.target.checked;
+            this.$emit('update:selectedItems',selected ? this.dataSource : []);
         }
     }
 }

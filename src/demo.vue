@@ -1,6 +1,7 @@
 <template>
  <div class="">
-     <Table :columns="columns" :dataSource="dataSource" bordered stripe @changeItem="x"></Table>
+     {{selected}}
+     <Table :selected-items.sync="selected" :columns="columns" :dataSource="dataSource" bordered stripe></Table>
  </div>
 </template>
  
@@ -12,25 +13,24 @@ export default {
    },
   data() {
       return {
+          selected: [],
           columns: [
               {text: '姓名',field: 'name'},
               {text: '分数',field: 'score'}
           ],
           dataSource: [
               {id: 1,name: 'AAA',score: 100},
-              {id: 1,name: 'BBB',score: 99},
-              {id: 1,name: 'CCC',score: 54},
-              {id: 1,name: 'DDD',score: 76},
-              {id: 1,name: 'EEE',score: 79},
-              {id: 1,name: 'FFF',score: 65},
-              {id: 1,name: 'GGG',score: 23}
+              {id: 2,name: 'BBB',score: 99},
+              {id: 3,name: 'CCC',score: 54},
+              {id: 4,name: 'DDD',score: 76},
+              {id: 5,name: 'EEE',score: 79},
+              {id: 6,name: 'FFF',score: 65},
+              {id: 7,name: 'GGG',score: 23}
           ]
       }
   },
   methods: {
-      x(obj){
-          console.log(obj)
-      }
+
   }
    
 }
