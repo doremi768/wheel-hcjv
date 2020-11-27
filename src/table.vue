@@ -9,9 +9,9 @@
                 <th v-for="column in columns" :key="column.field">
                     <div class="table-header">
                         {{column.text}}
-                        <span class="sorter">
-                            <Icon name="up"></Icon>
-                            <Icon name="down2"></Icon>
+                        <span class="sorter" v-if="column.field in orderBy" @click="changeOrderBy(column.field)">
+                            <Icon name="up" :class="{active: orderBy[column.field] === 'asc'}"></Icon>
+                            <Icon name="down2" :class="{active: orderBy[column.field] === 'desc'}"></Icon>
                         </span>
                     </div>
                 </th>
@@ -99,6 +99,10 @@ export default {
         selectedItems: {
             type: Array,
             default: () => []
+        },
+        orderBy: {
+            type: Object,
+            default: () => ({})
         }
     },
     methods: {
@@ -118,6 +122,18 @@ export default {
         },
         isSelectedItems(item) {
             return this.selectedItems.filter(i => i.id === item.id).length > 0;
+        },
+        changeOrderBy(key) {
+            let copy = JSON.parse(JSON.stringify(this.orderBy));
+            let oldValue = copy[key];
+            if(oldValue === 'asc') {
+                copy[key] = 'desc'
+            } else if (oldValue === 'desc') {
+                copy[key] = true;
+            } else {
+                copy[key] = 'asc';
+            }
+            this.$emit('update:orderBy',copy);
         }
     }
 }
@@ -154,6 +170,9 @@ $cell-text-align: left;
                         height: 10px;
                         margin: 0 8px;
                         fill: #ccc;
+                        &.active {
+                            fill: #000;
+                        }
                         &:first-child {
                             position: relative;
                             bottom: -2px;

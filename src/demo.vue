@@ -1,7 +1,11 @@
 <template>
  <div class="">
      <!-- {{selected}} -->
-     <Table :selected-items.sync="selected" :columns="columns" :dataSource="dataSource" bordered></Table>
+     <Table :selected-items.sync="selected" 
+     :columns="columns" 
+     :dataSource="dataSource" 
+     bordered
+     :orderBy.sync="orderBy"></Table>
  </div>
 </template>
  
@@ -18,6 +22,10 @@ export default {
               {text: '姓名',field: 'name'},
               {text: '分数',field: 'score'}
           ],
+          orderBy: {
+              name: 'asc',
+            //   score: 'desc'
+          },
           dataSource: [
               {id: 1,name: 'AAA',score: 100},
               {id: 2,name: 'BBB',score: 99},
