@@ -1,5 +1,5 @@
 <template>
-    <svg class="icon" @click="$emit('click',$event)">
+    <svg class="icon" @click="$emit('click',$event)" :class="{rotate: name === 'loading'}">
         <use :xlink:href="`#i-${name}`"></use>
     </svg>
 </template>
@@ -11,6 +11,10 @@ export default {
 } 
 </script>
 <style lang="scss">
+  @keyframes rotate {
+      0%{transform: rotate(0deg);}
+      100%{transform: rotate(360deg);}
+  }
     .icon{
         margin: .2em;
         width: 1.5em;
@@ -19,4 +23,5 @@ export default {
         fill: currentColor;
         overflow: hidden;
     }
+.rotate{animation: rotate 1s infinite linear;} 
 </style>

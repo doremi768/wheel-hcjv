@@ -30,18 +30,23 @@
             </tr>
         </tbody>
     </table>
+    <div class="loading">
+        <Button icon="loading"></Button>
+        <Icon name="loading"/>
+    </div>
  </div>
 </template>
  
 <script>
 import Icon from './icon.vue'
+import Button from './button/button.vue'
 export default {
     data () {
         return {
 
         }
     },
-    components: {Icon},
+    components: {Icon,Button},
     watch: {
         selectedItems() {
             if(this.selectedItems.length === this.dataSource.length) {

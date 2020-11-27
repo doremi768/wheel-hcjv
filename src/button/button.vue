@@ -1,6 +1,6 @@
 <template>
     <button class="w-button" :class="[{[`icon-${iconPosition}`]: true},{[`type-${type}`]:true},{'disable': disable}]">
-            <w-icon v-if="icon" :name="icon" class="icon" :class="{rotate: icon == 'loading'}"></w-icon>
+            <w-icon v-if="icon" :name="icon" class="icon"></w-icon>
             <div class="content">
                 <slot/>
             </div>
@@ -44,10 +44,6 @@ $letter-spacing: 2px;
 $border-radius: 5px;
 $border-color: #dcdfe6;
 
-  @keyframes rotate {
-      0%{transform: rotate(0deg);}
-      100%{transform: rotate(360deg);}
-  }
  .w-button{
         font-size: $font-size;
         height: $button-height;
@@ -68,7 +64,6 @@ $border-color: #dcdfe6;
             > .icon{order: 2; margin-left: .3em; margin-right: 0}
             > .content{order: 1}
         }
-        .rotate{animation: rotate 1s infinite linear;} 
     }
    
 </style>
