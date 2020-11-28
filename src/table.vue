@@ -147,37 +147,47 @@ export default {
         }
     },
     mounted() {
-        let table2 = this.$refs.table.cloneNode(false);
-        this.table2 = table2;
-        table2.classList.add('copy');
-        let tHead = this.$refs.table.children[0];
-        let {height} = tHead.getBoundingClientRect();
-        this.$refs.wrapper.style.paddingTop = height + 'px';
-        this.$refs.tableWrapper.style.height = this.height - height + 'px';
-        table2.appendChild(tHead);
-        this.$refs.wrapper.appendChild(table2);
-
-        if(this.$slots.default) {
-            let div = this.$refs.actions[0];
-            let {width} = div.getBoundingClientRect();
-            let parent = div.parentNode;
-            let styles = getComputedStyle(parent);
-            let paddingLeft = styles.getPropertyValue('padding-left');
-            let borderLeft = styles.getPropertyValue('border-left-width');
-            let width2 = width + parseInt(paddingLeft) + parseInt(borderLeft);
-            
-            let tbody = this.$refs.tbody.offsetWidth;
-            let tableWrapper = this.$refs.tableWrapper.offsetWidth;
-            this.$refs.actionHeader.style.width = width2 + tableWrapper-tbody + 'px';
-            this.$refs.actions.map(div => {
-                div.parentNode.style.width = width2 + 'px';
-            })
-        }
+        this.createThead();
+        this.customColumn();
     },
     beforeDestroy() {
         this.table2.remove();
     },
     methods: {
+        customColumn() {
+            if(this.$slots.default) {
+                let div = this.$refs.actions[0];
+                const {width} = div.getBoundingClientRect();
+                let styles = getComputedStyle(div.parentNode);
+                const paddingLeft = styles.getPropertyValue('padding-left');
+                const borderLeft = styles.getPropertyValue('border-left-width');
+                const width2 = width + parseInt(paddingLeft) + parseInt(borderLeft);
+                this.computeCustomColumn(width2);
+        }
+        },
+        createThead() {
+            let table2 = this.$refs.table.cloneNode(false);
+            this.table2 = table2;
+            table2.classList.add('copy');
+            let tHead = this.computeThead();
+            table2.appendChild(tHead);
+            this.$refs.wrapper.appendChild(table2);
+        },
+        computeCustomColumn(width2) {
+            const tbody = this.$refs.tbody.offsetWidth;
+            const tableWrapperWidth = this.$refs.tableWrapper.offsetWidth;
+            this.$refs.actionHeader.style.width = width2 + tableWrapperWidth-tbody + 'px';
+            this.$refs.actions.map(div => {
+                div.parentNode.style.width = width2 + 'px';
+            })
+        },
+        computeThead() {
+            let tHead = this.$refs.table.children[0];
+            let {height} = tHead.getBoundingClientRect();
+            this.$refs.wrapper.style.paddingTop = height + 'px';
+            this.$refs.tableWrapper.style.height = this.height - height + 'px';
+            return tHead;
+        },
         onChangeItem(item,index,e) {
             let selected = e.target.checked;
             let copy= JSON.parse(JSON.stringify(this.selectedItems));
