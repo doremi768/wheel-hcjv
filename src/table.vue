@@ -1,5 +1,5 @@
 <template>
- <div class="">
+ <div class="wrapper">
     <table class="table" :class="{bordered}">
         <thead>
             <tr>
@@ -30,8 +30,7 @@
             </tr>
         </tbody>
     </table>
-    <div class="loading">
-        <Button icon="loading"></Button>
+    <div v-if="loading" class="loading">
         <Icon name="loading"/>
     </div>
  </div>
@@ -108,6 +107,10 @@ export default {
         orderBy: {
             type: Object,
             default: () => ({})
+        },
+        loading: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -206,5 +209,18 @@ $cell-text-align: left;
             }
         }
     }
-
+    .wrapper {
+        position: relative;
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255,255,255,.6);
+        }
+    }
 </style>

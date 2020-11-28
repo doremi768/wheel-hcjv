@@ -5,7 +5,9 @@
      :columns="columns" 
      :dataSource="dataSource" 
      bordered
-     :orderBy.sync="orderBy"></Table>
+     :orderBy.sync="orderBy"
+     :loading="loading"
+     @update:orderBy="abc"></Table>
  </div>
 </template>
  
@@ -17,6 +19,7 @@ export default {
    },
   data() {
       return {
+          loading: false,
           selected: [],
           columns: [
               {text: '姓名',field: 'name'},
@@ -38,7 +41,13 @@ export default {
       }
   },
   methods: {
-
+      abc() {
+          this.loading = true;
+          setTimeout(() => {
+              this.dataSource = this.dataSource.sort((a,b) => a.score - b.score);
+          this.loading = false;
+          },3000)
+      }
   }
    
 }
