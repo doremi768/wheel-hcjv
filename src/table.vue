@@ -5,11 +5,11 @@
             <thead>
                 <tr>
                     <th style="width: 50px;"></th>
-                    <th v-if="select" style="width: 50px;">
+                    <th v-if="select" style="width: 50px;" class="center">
                         <input type="checkbox" @change="onChangeAllItem" ref="allChecked"
                     :checked="areAllItemSelected">
                     </th>
-                    <th v-if="numberVisible" style="width: 50px">#</th>
+                    <th v-if="numberVisible" style="width: 50px" class="center">#</th>
                     <th :style="{width: column.width + 'px'}" v-for="column in columns" :key="column.field">
                         <div class="table-header">
                             {{column.text}}
@@ -19,24 +19,31 @@
                             </span>
                         </div>
                     </th>
+                    <th v-if="$slots.default" ref="actionHeader">
+                    </th>
                 </tr>
             </thead>
-            <tbody :class="{striped}">
+            <tbody :class="{striped}" ref="tbody">
                 <template v-for="(item,index) in dataSource">
                 <tr :key="item.id">
-                    <td style="width: 50px">
+                    <td style="width: 50px" class="center">
                         <div v-if="item[expendField]" @click="expendItem(item.id)" class="expend-field">
                             <span v-if="isExendedIds(item.id)">&minus;</span>
                             <span v-else>+</span>
                         </div>
                     </td>
-                    <td v-if="select" style="width: 50px">
+                    <td v-if="select" style="width: 50px" class="center">
                         <input type="checkbox" @change="onChangeItem(item,index,$event)"
                         :checked="isSelectedItems(item)">
                     </td>
-                    <td v-if="numberVisible" style="width: 50px">{{index + 1}}</td>
+                    <td v-if="numberVisible" style="width: 50px" class="center">{{index + 1}}</td>
                     <td :style="{width: column.width + 'px'}" v-for="column in columns" :key="column.field">
                         {{item[column.field]}}
+                    </td>
+                    <td v-if="$slots.default">
+                        <div ref="actions" style="display: inline-block;">
+                            <slot :item="item"></slot>
+                        </div>
                     </td>
                 </tr>
                 <tr v-if="isExendedIds(item.id)" :key="`${item.id}-expend`">
@@ -149,7 +156,23 @@ export default {
         this.$refs.tableWrapper.style.height = this.height - height + 'px';
         table2.appendChild(tHead);
         this.$refs.wrapper.appendChild(table2);
-    
+
+        if(this.$slots.default) {
+            let div = this.$refs.actions[0];
+            let {width} = div.getBoundingClientRect();
+            let parent = div.parentNode;
+            let styles = getComputedStyle(parent);
+            let paddingLeft = styles.getPropertyValue('padding-left');
+            let borderLeft = styles.getPropertyValue('border-left-width');
+            let width2 = width + parseInt(paddingLeft) + parseInt(borderLeft);
+            
+            let tbody = this.$refs.tbody.offsetWidth;
+            let tableWrapper = this.$refs.tableWrapper.offsetWidth;
+            this.$refs.actionHeader.style.width = width2 + tableWrapper-tbody + 'px';
+            this.$refs.actions.map(div => {
+                div.parentNode.style.width = width2 + 'px';
+            })
+        }
     },
     beforeDestroy() {
         this.table2.remove();
@@ -196,11 +219,10 @@ export default {
             return this.expendedIds.indexOf(id) >= 0;
         },
         colspan(expendField) {
-            if(expendField) {
-                return this.columns.length + Number(this.numberVisible) + Number(this.select) + 1
-            } else {
-                return this.columns.length + Number(this.numberVisible) + Number(this.select)
-            }
+            let expendFieldSum = this.columns.length + Number(this.numberVisible) + Number(this.select);
+            if(expendField) {expendFieldSum++};
+            if(this.$slots.default) {expendFieldSum++};
+            return expendFieldSum;
         }
     },
     
@@ -294,9 +316,11 @@ $cell-text-align: left;
    .expend-field {
        display: flex;
        align-items: center;
-       justify-content: left;
+       justify-content: center;
        cursor: pointer;
-       padding-left: 10px;
        font-size: 20px;
+   }
+   .center.center {
+       text-align: center;
    }
 </style>

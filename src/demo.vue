@@ -6,10 +6,27 @@
      :dataSource="dataSource" 
      :orderBy.sync="orderBy"
      :loading="loading"
+     bordered
      @update:orderBy="abc"
      height="400"
      expend-field="description"
-     numberVisible></Table>
+     numberVisible>
+        <template>
+            <button>查看</button>
+            <button>编辑</button>
+        </template>
+     </Table>
+     <Table :selected-items.sync="selected" 
+     :columns="columns" 
+     :dataSource="dataSource" 
+     :orderBy.sync="orderBy"
+     :loading="loading"
+     bordered
+     @update:orderBy="abc"
+     height="400"
+     expend-field="description"
+     numberVisible>
+     </Table>
  </div>
 </template>
  
