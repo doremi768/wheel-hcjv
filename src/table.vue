@@ -25,9 +25,10 @@
                 <template v-for="(item,index) in dataSource">
                 <tr :key="item.id">
                     <td style="width: 50px">
-                        <span class="icon-wrapper" :class="{rotate: isExendedIds(item.id)}" >
-                            <icon class="right-icon" name="right" @click="expendItem(item.id)" v-if="item[expendField]"/>
-                        </span>
+                        <div v-if="item[expendField]" @click="expendItem(item.id)" class="expend-field">
+                            <span v-if="isExendedIds(item.id)">&minus;</span>
+                            <span v-else>+</span>
+                        </div>
                     </td>
                     <td v-if="select" style="width: 50px">
                         <input type="checkbox" @change="onChangeItem(item,index,$event)"
@@ -61,6 +62,7 @@ export default {
         return {
             table2: null,
             expendedIds: [],
+            open: false
         }
     },
     components: {Icon,Button},
@@ -183,6 +185,7 @@ export default {
             this.$emit('update:orderBy',copy);
         },
         expendItem(id) {
+            this.open = !this.open
             if(this.isExendedIds(id)){
                 let a = this.expendedIds.splice(this.expendedIds.indexOf(id),1)
             } else {
@@ -199,7 +202,8 @@ export default {
                 return this.columns.length + Number(this.numberVisible) + Number(this.select)
             }
         }
-    }
+    },
+    
 }
 </script>
  
@@ -287,15 +291,12 @@ $cell-text-align: left;
             background: #fff;
         }
     }
-    .right-icon {
-        width: 14px;
-        height: 14px;
-
-    }
-    .icon-wrapper{
-        display: inline-block;
-        &.rotate {
-        transform: rotate(90deg) ;
-        }
-    }
+   .expend-field {
+       display: flex;
+       align-items: center;
+       justify-content: left;
+       cursor: pointer;
+       padding-left: 10px;
+       font-size: 20px;
+   }
 </style>
