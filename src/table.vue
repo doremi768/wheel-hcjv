@@ -1,37 +1,41 @@
 <template>
- <div class="wrapper">
-    <table class="table" :class="{bordered}">
-        <thead>
-            <tr>
-                <th v-if="select"><input type="checkbox" @change="onChangeAllItem" ref="allChecked"
-                :checked="areAllItemSelected"></th>
-                <th v-if="numberVisible">#</th>
-                <th v-for="column in columns" :key="column.field">
-                    <div class="table-header">
-                        {{column.text}}
-                        <span class="sorter" v-if="column.field in orderBy" @click="changeOrderBy(column.field)">
-                            <Icon name="up" :class="{active: orderBy[column.field] === 'asc'}"></Icon>
-                            <Icon name="down2" :class="{active: orderBy[column.field] === 'desc'}"></Icon>
-                        </span>
-                    </div>
-                </th>
-            </tr>
-        </thead>
-        <tbody :class="{striped}">
-            <tr v-for="(item,index) in dataSource" :key="item.id">
-                <td v-if="select">
-                    <input type="checkbox" @change="onChangeItem(item,index,$event)"
-                    :checked="isSelectedItems(item)">
-                </td>
-                <td v-if="numberVisible">{{index + 1}}</td>
-                <td v-for="column in columns" :key="column.field">
-                    {{item[column.field]}}
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div v-if="loading" class="loading">
-        <Icon name="loading"/>
+ <div class="wrapper" ref="wrapper">
+    <div :style="{height,overflow:'auto'}" ref="tableWrapper">
+        <table class="table" :class="{bordered}" ref="table">
+            <thead>
+                <tr>
+                    <th sv-if="select" style="width: 50px">
+                        <input type="checkbox" @change="onChangeAllItem" ref="allChecked"
+                    :checked="areAllItemSelected">
+                    </th>
+                    <th v-if="numberVisible" style="width: 50px">#</th>
+                    <th :style="{width: column.width + 'px'}" v-for="column in columns" :key="column.field">
+                        <div class="table-header">
+                            {{column.text}}
+                            <span class="sorter" v-if="column.field in orderBy" @click="changeOrderBy(column.field)">
+                                <Icon name="up" :class="{active: orderBy[column.field] === 'asc'}"></Icon>
+                                <Icon name="down2" :class="{active: orderBy[column.field] === 'desc'}"></Icon>
+                            </span>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody :class="{striped}">
+                <tr v-for="(item,index) in dataSource" :key="item.id">
+                    <td v-if="select" style="width: 50px">
+                        <input type="checkbox" @change="onChangeItem(item,index,$event)"
+                        :checked="isSelectedItems(item)">
+                    </td>
+                    <td v-if="numberVisible" style="width: 50px">{{index + 1}}</td>
+                    <td :style="{width: column.width + 'px'}" v-for="column in columns" :key="column.field">
+                        {{item[column.field]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div v-if="loading" class="loading">
+            <Icon name="loading"/>
+        </div>
     </div>
  </div>
 </template>
@@ -42,7 +46,7 @@ import Button from './button/button.vue'
 export default {
     data () {
         return {
-
+            table2: null
         }
     },
     components: {Icon,Button},
@@ -111,7 +115,25 @@ export default {
         loading: {
             type: Boolean,
             default: false
+        },
+        height: {
+            type : String | Number
         }
+    },
+    mounted() {
+        let table2 = this.$refs.table.cloneNode(false);
+        this.table2 = table2;
+        table2.classList.add('copy');
+        let tHead = this.$refs.table.children[0];
+        let {height} = tHead.getBoundingClientRect();
+        this.$refs.wrapper.style.paddingTop = height + 'px';
+        this.$refs.tableWrapper.style.height = this.height - height + 'px';
+        // table2.style.top = - height + 'px';
+        table2.appendChild(tHead);
+        this.$refs.wrapper.appendChild(table2);
+    },
+    beforeDestroy() {
+        this.table2.remove();
     },
     methods: {
         onChangeItem(item,index,e) {
@@ -211,6 +233,7 @@ $cell-text-align: left;
     }
     .wrapper {
         position: relative;
+        margin: 10px;
         .loading {
             position: absolute;
             top: 0;
@@ -221,6 +244,13 @@ $cell-text-align: left;
             justify-content: center;
             align-items: center;
             background: rgba(255,255,255,.6);
+        }
+        .copy{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
         }
     }
 </style>
