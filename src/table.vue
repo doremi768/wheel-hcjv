@@ -4,7 +4,8 @@
         <table class="table" :class="{bordered}" ref="table">
             <thead>
                 <tr>
-                    <th sv-if="select" style="width: 50px">
+                    <th style="width: 50px;"></th>
+                    <th v-if="select" style="width: 50px;">
                         <input type="checkbox" @change="onChangeAllItem" ref="allChecked"
                     :checked="areAllItemSelected">
                     </th>
@@ -21,7 +22,13 @@
                 </tr>
             </thead>
             <tbody :class="{striped}">
-                <tr v-for="(item,index) in dataSource" :key="item.id">
+                <template v-for="(item,index) in dataSource">
+                <tr :key="item.id">
+                    <td style="width: 50px">
+                        <span class="icon-wrapper" :class="{rotate: isExendedIds(item.id)}" >
+                            <icon class="right-icon" name="right" @click="expendItem(item.id)" v-if="item[expendField]"/>
+                        </span>
+                    </td>
                     <td v-if="select" style="width: 50px">
                         <input type="checkbox" @change="onChangeItem(item,index,$event)"
                         :checked="isSelectedItems(item)">
@@ -31,6 +38,12 @@
                         {{item[column.field]}}
                     </td>
                 </tr>
+                <tr v-if="isExendedIds(item.id)" :key="`${item.id}-expend`">
+                    <td :colspan="colspan(item[expendField])">
+                        {{item[expendField]}}
+                    </td>
+                </tr>
+                </template>
             </tbody>
         </table>
         <div v-if="loading" class="loading">
@@ -46,7 +59,8 @@ import Button from './button/button.vue'
 export default {
     data () {
         return {
-            table2: null
+            table2: null,
+            expendedIds: [],
         }
     },
     components: {Icon,Button},
@@ -74,7 +88,7 @@ export default {
                 }
             }
             return equal;
-        }
+        },
     },
     props: {
         columns: {
@@ -118,6 +132,9 @@ export default {
         },
         height: {
             type : String | Number
+        },
+        expendField: {
+            type: String
         }
     },
     mounted() {
@@ -128,9 +145,9 @@ export default {
         let {height} = tHead.getBoundingClientRect();
         this.$refs.wrapper.style.paddingTop = height + 'px';
         this.$refs.tableWrapper.style.height = this.height - height + 'px';
-        // table2.style.top = - height + 'px';
         table2.appendChild(tHead);
         this.$refs.wrapper.appendChild(table2);
+    
     },
     beforeDestroy() {
         this.table2.remove();
@@ -164,6 +181,23 @@ export default {
                 copy[key] = 'asc';
             }
             this.$emit('update:orderBy',copy);
+        },
+        expendItem(id) {
+            if(this.isExendedIds(id)){
+                let a = this.expendedIds.splice(this.expendedIds.indexOf(id),1)
+            } else {
+                this.expendedIds.push(id);
+            }
+        },
+        isExendedIds(id) {
+            return this.expendedIds.indexOf(id) >= 0;
+        },
+        colspan(expendField) {
+            if(expendField) {
+                return this.columns.length + Number(this.numberVisible) + Number(this.select) + 1
+            } else {
+                return this.columns.length + Number(this.numberVisible) + Number(this.select)
+            }
         }
     }
 }
@@ -251,6 +285,17 @@ $cell-text-align: left;
             left: 0;
             width: 100%;
             background: #fff;
+        }
+    }
+    .right-icon {
+        width: 14px;
+        height: 14px;
+
+    }
+    .icon-wrapper{
+        display: inline-block;
+        &.rotate {
+        transform: rotate(90deg) ;
         }
     }
 </style>

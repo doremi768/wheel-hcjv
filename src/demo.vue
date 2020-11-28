@@ -4,11 +4,12 @@
      <Table :selected-items.sync="selected" 
      :columns="columns" 
      :dataSource="dataSource" 
-     bordered
      :orderBy.sync="orderBy"
      :loading="loading"
      @update:orderBy="abc"
-     height="400"></Table>
+     height="400"
+     expend-field="description"
+     numberVisible></Table>
  </div>
 </template>
  
@@ -23,7 +24,7 @@ export default {
           loading: false,
           selected: [],
           columns: [
-              {text: '姓名',field: 'name',width: '100'},
+              {text: '姓名',field: 'name',width: '500'},
               {text: '分数',field: 'score'}
           ],
           orderBy: {
@@ -31,8 +32,8 @@ export default {
             //   score: 'desc'
           },
           dataSource: [
-              {id: 1,name: 'AAA',score: 100},
-              {id: 2,name: 'BBB',score: 99},
+              {id: 1,name: 'AAA',score: 100,description: 'xxxxxxxxxxxx'},
+              {id: 2,name: 'BBB',score: 99,description: 'xxxxxxxxxxxx'},
               {id: 3,name: 'CCC',score: 54},
               {id: 4,name: 'DDD',score: 76},
               {id: 5,name: 'EEE',score: 79},
