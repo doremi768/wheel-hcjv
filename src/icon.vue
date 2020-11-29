@@ -6,8 +6,8 @@
 <script>
 import './tools/svg'
 export default {
+    name: 'WIcon',
     props: ['name'],
-    
 } 
 </script>
 <style lang="scss">

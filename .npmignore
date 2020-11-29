@@ -1,0 +1,13 @@
+/.cache/
+/dist/demo.html
+/docs/
+/node_modules/
+/public/
+/src/
+/tests/
+/.gitignore/
+babel.config.js
+debug.log
+karma.conf.js
+vue.config.js
+package-lock.json

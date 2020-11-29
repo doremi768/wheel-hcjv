@@ -23,5 +23,3 @@ export {default as ClickOutside} from './tools/click-outside';
 export {default as Plugin} from './tools/plugin';
 
 
-
-

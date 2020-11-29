@@ -11,6 +11,7 @@
 import Icon from '../icon'
 import '../../public/css/button-type.scss'
 export default {
+    name: 'WButton',
     components: {
         'w-icon': Icon
     },

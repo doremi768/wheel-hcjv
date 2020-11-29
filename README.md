@@ -1,24 +1,55 @@
-# hello-world
+## Introduction
+This library is a hands-on project, I've done with reference to several excellent component libraries.
 
-## Project setup
+If this project has helped you out, please support it with a star🌟.
+
+## Documentation
+To check out live examples and documents, visit https://xxxx
+
+To view the source code, visit https://gitee.com/what_and/wheel
+## Quick start
 ```
-npm install
+npm install wheel-hcjv
+```
+```js
+//main.js
+import 'wheel-hcjv/dist/wheel-hcjv.css'
+```
+Introduction part:
+```js
+//App.vue
+<template>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <w-button>A default button</w-button>
+  </div>
+</template>
+
+<script>
+import {Button as WButton} from 'wheel-hcjv'
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld,
+    WButton
+  }
+}
+</script>
 ```
 
-### Compiles and hot-reloads for development
+## Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+## Compiles and minifies for production
 ```
 npm run build
 ```
+## follow-up work
 
-### Run your unit tests
-```
-npm run test:unit
-```
+Through this small trial let me understand the differences between a number of component libraries.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+I'll spend the rest of the time refactoring the entire project, adding more components, and trying out multi-terminal compatibility issues.
