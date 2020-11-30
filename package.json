@@ -4,7 +4,11 @@
   "description": "wheel-hcjv is a component lib implemented by Vue 2.",
   "main": "dist/wheel-hcjv.umd.js",
   "keywords": [
-    "Vue","Vue Cli","UI","learn","demo"
+    "Vue",
+    "Vue Cli",
+    "UI",
+    "learn",
+    "demo"
   ],
   "author": {
     "name": "doremi"
@@ -26,7 +30,7 @@
     "build": "vue-cli-service build --target lib --name wheel-hcjv src/index.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "test": "karma start --single-run",
+    "test": "cross-env BABEL_ENV=test karma start --single-run",
     "test:karma": "karma start",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -39,9 +43,12 @@
     "@vue/cli-plugin-unit-mocha": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/test-utils": "^1.0.3",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.1.2",
+    "cross-env": "^7.0.2",
     "karma": "^5.2.3",
     "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.3",
     "karma-mocha": "^2.0.1",
     "karma-sourcemap-loader": "^0.3.8",
     "karma-spec-reporter": "0.0.32",
